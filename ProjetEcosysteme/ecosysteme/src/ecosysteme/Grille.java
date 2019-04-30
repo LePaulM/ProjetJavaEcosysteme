@@ -35,6 +35,17 @@ public abstract class Grille {
 	}
 
 	/**
+	 * Une methode (ou getter ??) qui recupere le contenu de la grille a une position (x,y)
+	 * Cette méthode doit récupérer la case présente à la position (x, y normalement - Paul
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	public int getCase(int x, int y) {
+		return this.grille[x][y];
+	}
+	
+	/**
 	 * constructeur de la grille sous forme de matrice
 	 * @param taille
 	 */
@@ -203,16 +214,7 @@ public abstract class Grille {
 	public abstract void creationEau();
 	public abstract void creationMontagne();
 	
-	
-	/**
-	 * Une methode (ou getter ??) qui recupere le contenu de la grille a une position (x,y)
-	 * @param x
-	 * @param y
-	 * @return
-	 */
-	public int getCase(int x, int y) {
-		return this.grille[x][y];
-	}
+
 	
 	/**
 	 * Une Methode permettant de creer la grille a partir des methodes precedentes, un ordre particulier de ces methode sera choisi (......)

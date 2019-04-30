@@ -80,5 +80,16 @@ public class Jungle extends Grille{
 		jungle.afficher();
 	}
 
+	@Override
+	public void creationNeige() {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void creationMontagne() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import src.Visualisation.Grille;
-import src.Visualisation.HashMap;
+import java.util.HashMap;
 import src.Visualisation.ImageIcon;
 import src.Visualisation.String;
 

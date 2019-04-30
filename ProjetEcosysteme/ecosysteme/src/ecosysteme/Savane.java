@@ -56,6 +56,19 @@ public class Savane extends Grille{
 			
 	}
 	
+	@Override
+	public void creationNeige() {
+		// TODO Auto-generated method stub
+		//		Methode vide car il n'y a pas de neige dans la savane
+	}
+
+
+	@Override
+	public void creationMontagne() {
+		// TODO Auto-generated method stub
+		//		Methode vide car il n'y a pas de montagne dans la savane
+	}
+	
 	/**
 	 * Quantitee de buissons et d'arbres dans l'ecosysteme Savane ---> a mettre absolument dans une methode ??
 	 */
@@ -76,7 +89,5 @@ public class Savane extends Grille{
 		savane.creationEau();
 		savane.afficher();
 	}
-	
-	
 	
 }

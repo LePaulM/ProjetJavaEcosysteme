@@ -7,6 +7,7 @@ import java.util.stream.IntStream;
 import Gestion.Gestionnaire;
 import ecosysteme.Case;
 import ecosysteme.Grille;
+import sun.tools.tree.CaseStatement;
 
 
 
@@ -220,21 +221,25 @@ public abstract class Animal {
 		int direction=(int)(Math.random() * 9);					// 		on choisit un nombre entre 1 et 9 qui determinera quelle direction suivra l'animal
 		if (direction==1) {
 			Case caseSuivante = Grille.getCase1(this.getEmplacement().getX() - this.vitesse,this.getEmplacement().getY() + this.vitesse);		//		on définit ce qui sera la prochaine case
-			if (caseSuivante.estVide() == true) {				//		si la case est vide
+			if (caseSuivante.isEstvide() == true) {				//		si la case est vide
 				this.setEmplacement(caseSuivante);				// 		on y va
 				caseSuivante.setEstVide(false);					//		la case n'est plus vide
 			}													//		si la case n'est pas vide l'animal ne bouge pas?
 		}
+		// moment int�ressant je crois
 		if(direction==2) {
-			Case caseSuivante = Grille.getCase1(this.getEmplacement().getX(),this.getEmplacement().getY()+this.vitesse);
-			if (caseSuivante.estVide() == true) {
+			int nouveauX = this.getEmplacement().getX();
+			int nouveauY = this.getEmplacement().getY() + this.vitesse;
+			Case caseSuivante = Grille.getCase(nouveauX,nouveauY);
+			if (caseSuivante.isEstvide() == true) {
 				this.setEmplacement(caseSuivante);
 				caseSuivante.setEstVide(false);
 			}
 		}
+		
 		if(direction==3) {
 			Case caseSuivante = Grille.getCase1(this.getEmplacement().getX()+this.vitesse,this.getEmplacement().getY()+this.vitesse);
-			if (caseSuivante.estVide() == true) {
+			if (caseSuivante.isEstvide() == true) {
 				this.setEmplacement(caseSuivante);
 
 				caseSuivante.setEstVide(false);
@@ -242,34 +247,34 @@ public abstract class Animal {
 		}
 		if(direction==4) {
 			Case caseSuivante = Grille.getCase1(this.getEmplacement().getX()-this.vitesse,this.getEmplacement().getY());
-			if (caseSuivante.estVide() == true) {
+			if (caseSuivante.isEstvide() == true) {
 				this.setEmplacement(caseSuivante);
 				caseSuivante.setEstVide(false);
 			}
 		}
 		if(direction==5) {
 			Case caseSuivante = Grille.getCase1(this.getEmplacement().getX()+this.vitesse,this.getEmplacement().getY());
-			if (caseSuivante.estVide() == true) {
+			if (caseSuivante.isEstvide() == true) {
 				this.setEmplacement(caseSuivante);
 				caseSuivante.setEstVide(false);
 			}
 		}
 		if (direction==6) {
 			Case caseSuivante = Grille.getCase1(this.getEmplacement().getX()-this.vitesse,this.getEmplacement().getY()-this.vitesse);
-			if (caseSuivante.estVide() == true) {
+			if (caseSuivante.isEstvide() == true) {
 				this.setEmplacement(caseSuivante);
 				caseSuivante.setEstVide(false);
 			}
 		}
 		if(direction==7) {
-			Case caseSuivante = Grille.getCase1(this.getEmplacement().getX(),this.getEmplacement().getY()-this.vitesse);
-			if (caseSuivante.estVide() == true) {
+			Case caseSuivante = Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()-this.vitesse);
+			if (caseSuivante.isEstvide() == true) {
 				this.setEmplacement(caseSuivante);
 				caseSuivante.setEstVide(false);
 			}
 		}
-		Case caseSuivante = Grille.getCase1(this.getEmplacement().getX()+this.vitesse,this.getEmplacement().getY()-this.vitesse);
-		if (caseSuivante.estVide() == true) {
+		Case caseSuivante = this.getEmplacement().getX()+this.vitesse,this.getEmplacement().getY()-this.vitesse;
+		if (caseSuivante.isEstvide() == true) {
 			this.setEmplacement(caseSuivante);
 			caseSuivante.setEstVide(false);
 		}
@@ -309,11 +314,11 @@ public abstract class Animal {
 				Case case8 = Grille.getCase1(this.getEmplacement().getX()+1, this.getEmplacement().getY()+1);
 				cases.add(case8);
 				for (Case c : cases){ 
-					if (c.estVide() == false) {									//			Si une des cases adjacentes n'est pas vide, 
+					if (c.isEstvide() == false) {									//			Si une des cases adjacentes n'est pas vide, 
 						if (c.getAnimal().getEspece().equals(this.espece))		//			et si l'animal présent sur la case adjacente est de la même espèce, 
 							this.aProcree = true;										// 			la variable permettant de savoir si l'animal a procree devient true
 						for (Case cbis : cases){										// 			on cherche ensuite  
-							if (c.estVide() == true) {							//			une case vide 
+							if (c.isEstvide() == true) {							//			une case vide 
 								Animal animal = new Animal(Gestionnaire.getTour(),cbis,
 										this.tpDecomposition,  this.couleur, this.tailleEstomac/2,  this.maturite,	// pour créer un nouvel individu
 										this.aProcree,this.meurtFaim);

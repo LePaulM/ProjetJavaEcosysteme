@@ -41,6 +41,18 @@ public class Steppe extends Grille{
 		}
 	}
 
+	@Override
+	public void creationNeige() {
+		// TODO Auto-generated method stub
+		//	Methode vide car il n'y a pas de neige dans la steppe
+	}
+
+	@Override
+	public void creationMontagne() {
+		// TODO Auto-generated method stub
+		//	Methode vide car il n'y a pas de montagne dans la steppe
+	}
+	
 	/**
 	 * Quantitee de buissons l'ecosysteme Steppe ---> a mettre absolument dans une methode ??
 	 */
@@ -57,5 +69,7 @@ public class Steppe extends Grille{
 		steppe.creationEau();
 		steppe.afficher();
 	}
+
+
 
 }
