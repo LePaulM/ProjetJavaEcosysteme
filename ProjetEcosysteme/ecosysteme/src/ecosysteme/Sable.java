@@ -15,7 +15,16 @@ public class Sable extends Case{
 		return 4;
 	}
 	
-	
+	@Override
+	public int getNourriture() {
+		return 0;
+	}
 
+	@Override
+	public void setNourriture(int nourriture) {		
+	}
 
+	@Override
+	public void recuperation() {
+	}
 }

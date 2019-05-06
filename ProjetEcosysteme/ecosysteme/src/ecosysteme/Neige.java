@@ -14,6 +14,17 @@ public class Neige extends Case{
 	public int getTypeOccupation() {
 		return 5;
 	}
-
 	
+	@Override
+	public int getNourriture() {
+		return 0;
+	}
+
+	@Override
+	public void setNourriture(int nourriture) {		
+	}
+
+	@Override
+	public void recuperation() {
+	}
 }

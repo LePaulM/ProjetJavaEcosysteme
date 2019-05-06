@@ -11,7 +11,8 @@ public class Foret extends Case{
 	/**
 	 * Constructeur
 	 */
-	public Foret(){
+	public Foret(int typeOccupation, boolean estvide, boolean cadavre, int[] position) {
+		super(2, estvide, cadavre, position);
 		this.nourriture=20;
 	}
 
@@ -54,5 +55,12 @@ public class Foret extends Case{
 				}
 			}
 		}
+	}
+
+
+	@Override
+	public int getTypeOccupation() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

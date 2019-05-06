@@ -14,7 +14,18 @@ public class Montagne extends Case{
 	public int getTypeOccupation() {
 		return 7;
 	}
-
 	
+	@Override
+	public int getNourriture() {
+		return 0;
+	}
+
+	@Override
+	public void setNourriture(int nourriture) {		
+	}
+
+	@Override
+	public void recuperation() {
+	}
 
 }

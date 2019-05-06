@@ -12,7 +12,7 @@ import ecosysteme.Case;
  *
  */
 
-public class Herbivore extends Animal{
+public abstract class Herbivore extends Animal{
 	/**
 	 * Constructeur
 	 * @param id
@@ -41,9 +41,9 @@ public class Herbivore extends Animal{
 
 	public void seNourrir(){
 		if (this.getRemplissageEstomac() < this.getTailleEstomac()) {
-			// si la case est de type "Herbe", "Buisson" ou Foret, l'herbivore peut manger
-			if(this.getEmplacement().getTypeOccupation().equals("Herbe")||this.getEmplacement().getTypeOccupation().equals("Buisson")
-					||this.getEmplacement().getTypeOccupation().equals("Foret")) {
+			// si la case est de type "Herbe" (0), "Buisson" (1) ou Foret (3), l'herbivore peut manger
+			if(this.getEmplacement().getTypeOccupation() == 0 || this.getEmplacement().getTypeOccupation() == 1
+					|| this.getEmplacement().getTypeOccupation() == 3 ) {
 				if (getRemplissageEstomac() < getTailleEstomac()) {
 					// si la case contient plus de nourriture que l'animal ne peut en manger, 
 					// alors il mange juste à sa faim
@@ -64,6 +64,6 @@ public class Herbivore extends Animal{
 				}
 			}
 		}
-
 	}
+	public abstract void seReproduire();
 }

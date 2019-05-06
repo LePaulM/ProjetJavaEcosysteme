@@ -15,5 +15,17 @@ public class Eau extends Case{
 		return 2;
 	}
 
+	@Override
+	public int getNourriture() {
+		return 0;
+	}
+
+	@Override
+	public void setNourriture(int nourriture) {		
+	}
+
+	@Override
+	public void recuperation() {
+	}
 	
 }

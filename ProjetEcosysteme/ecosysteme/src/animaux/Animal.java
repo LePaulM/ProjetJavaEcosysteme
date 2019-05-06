@@ -7,7 +7,6 @@ import java.util.stream.IntStream;
 import Gestion.Gestionnaire;
 import ecosysteme.Case;
 import ecosysteme.Grille;
-import sun.tools.tree.CaseStatement;
 
 
 
@@ -220,117 +219,85 @@ public abstract class Animal {
 	public void seDeplacer() {
 		int direction=(int)(Math.random() * 9);					// 		on choisit un nombre entre 1 et 9 qui determinera quelle direction suivra l'animal
 		if (direction==1) {
-			Case caseSuivante = Grille.getCase1(this.getEmplacement().getX() - this.vitesse,this.getEmplacement().getY() + this.vitesse);		//		on définit ce qui sera la prochaine case
-			if (caseSuivante.isEstvide() == true) {				//		si la case est vide
+			Case caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse,this.getEmplacement().getY() + this.vitesse);		//		on définit ce qui sera la prochaine case
+			if (caseSuivante.getEstVide() == true) {				//		si la case est vide
 				this.setEmplacement(caseSuivante);				// 		on y va
 				caseSuivante.setEstVide(false);					//		la case n'est plus vide
-			}													//		si la case n'est pas vide l'animal ne bouge pas?
+			} else {
+				this.seDeplacer();								//		si la case n'est pas vide on recommence
+			}
 		}
-		// moment int�ressant je crois
 		if(direction==2) {
 			int nouveauX = this.getEmplacement().getX();
 			int nouveauY = this.getEmplacement().getY() + this.vitesse;
 			Case caseSuivante = Grille.getCase(nouveauX,nouveauY);
-			if (caseSuivante.isEstvide() == true) {
+			if (caseSuivante.getEstVide() == true) {
 				this.setEmplacement(caseSuivante);
 				caseSuivante.setEstVide(false);
+			} else {
+				this.seDeplacer();
 			}
 		}
 		
 		if(direction==3) {
-			Case caseSuivante = Grille.getCase1(this.getEmplacement().getX()+this.vitesse,this.getEmplacement().getY()+this.vitesse);
-			if (caseSuivante.isEstvide() == true) {
+			Case caseSuivante = Grille.getCase(this.getEmplacement().getX()+this.vitesse,this.getEmplacement().getY()+this.vitesse);
+			if (caseSuivante.getEstVide() == true) {
 				this.setEmplacement(caseSuivante);
 
 				caseSuivante.setEstVide(false);
+			} else {
+				this.seDeplacer();
 			}
 		}
+		
 		if(direction==4) {
-			Case caseSuivante = Grille.getCase1(this.getEmplacement().getX()-this.vitesse,this.getEmplacement().getY());
-			if (caseSuivante.isEstvide() == true) {
+			Case caseSuivante = Grille.getCase(this.getEmplacement().getX()-this.vitesse,this.getEmplacement().getY());
+			if (caseSuivante.getEstVide() == true) {
 				this.setEmplacement(caseSuivante);
 				caseSuivante.setEstVide(false);
 			}
 		}
 		if(direction==5) {
-			Case caseSuivante = Grille.getCase1(this.getEmplacement().getX()+this.vitesse,this.getEmplacement().getY());
-			if (caseSuivante.isEstvide() == true) {
+			Case caseSuivante = Grille.getCase(this.getEmplacement().getX()+this.vitesse,this.getEmplacement().getY());
+			if (caseSuivante.getEstVide() == true) {
 				this.setEmplacement(caseSuivante);
 				caseSuivante.setEstVide(false);
+			} else {
+				this.seDeplacer();
 			}
 		}
+		
 		if (direction==6) {
-			Case caseSuivante = Grille.getCase1(this.getEmplacement().getX()-this.vitesse,this.getEmplacement().getY()-this.vitesse);
-			if (caseSuivante.isEstvide() == true) {
+			Case caseSuivante = Grille.getCase(this.getEmplacement().getX()-this.vitesse,this.getEmplacement().getY()-this.vitesse);
+			if (caseSuivante.getEstVide() == true) {
 				this.setEmplacement(caseSuivante);
 				caseSuivante.setEstVide(false);
+			} else {
+				this.seDeplacer();
 			}
 		}
+		
 		if(direction==7) {
 			Case caseSuivante = Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()-this.vitesse);
-			if (caseSuivante.isEstvide() == true) {
+			if (caseSuivante.getEstVide() == true) {
 				this.setEmplacement(caseSuivante);
 				caseSuivante.setEstVide(false);
+			} else {
+				this.seDeplacer();
 			}
 		}
-		Case caseSuivante = this.getEmplacement().getX()+this.vitesse,this.getEmplacement().getY()-this.vitesse;
-		if (caseSuivante.isEstvide() == true) {
+		
+		Case caseSuivante = Grille.getCase(this.getEmplacement().getX()+this.vitesse,this.getEmplacement().getY()-this.vitesse);
+		if (caseSuivante.getEstVide() == true) {
 			this.setEmplacement(caseSuivante);
 			caseSuivante.setEstVide(false);
+		} else {
+			this.seDeplacer();
 		}
 	}				
 
-	/**
-	 * 	Cette méthode permet à 2 animaux de la même espèce de se reproduire s'ils sont sur des cases adjacentes et de produire ainsi 
-	 *  un nouvel animal de la même espèce.
-	 */
-	public void seReproduire() {
-		if (this.estVivant == false) {
-			break;
-			if (this.aProcree == true) {
-				break;
-			} else {
-				
-				// il y a moyen de faire la m�me chose avec la position
-				// il faut mettre la reproduction dans les classes abstraites des animaux 
-				// car animal est une classe abstraite (on ne peut pas instancier un objet d'une classe abstraite
-//				Création de la liste des cases adjacentes
-				ArrayList<Case> cases = new ArrayList<Case>();
-//				Définition des cases adjacentes
-				Case case1 = Grille.getCase1(this.getEmplacement().getX()-1, this.getEmplacement().getY()-1);
-				cases.add(case1);
-				Case case2 = Grille.getCase1(this.getEmplacement().getX(), this.getEmplacement().getY()-1);
-				cases.add(case2);
-				Case case3 = Grille.getCase1(this.getEmplacement().getX()+1, this.getEmplacement().getY()-1);
-				cases.add(case3);
-				Case case4 = Grille.getCase1(this.getEmplacement().getX()-1, this.getEmplacement().getY());
-				cases.add(case4);
-				Case case5 = Grille.getCase1(this.getEmplacement().getX()+1, this.getEmplacement().getY());
-				cases.add(case5);
-				Case case6 = Grille.getCase1(this.getEmplacement().getX()-1, this.getEmplacement().getY()+1);
-				cases.add(case6);
-				Case case7 = Grille.getCase1(this.getEmplacement().getX(), this.getEmplacement().getY()+1);
-				cases.add(case7);
-				Case case8 = Grille.getCase1(this.getEmplacement().getX()+1, this.getEmplacement().getY()+1);
-				cases.add(case8);
-				for (Case c : cases){ 
-					if (c.isEstvide() == false) {									//			Si une des cases adjacentes n'est pas vide, 
-						if (c.getAnimal().getEspece().equals(this.espece))		//			et si l'animal présent sur la case adjacente est de la même espèce, 
-							this.aProcree = true;										// 			la variable permettant de savoir si l'animal a procree devient true
-						for (Case cbis : cases){										// 			on cherche ensuite  
-							if (c.isEstvide() == true) {							//			une case vide 
-								Animal animal = new Animal(Gestionnaire.getTour(),cbis,
-										this.tpDecomposition,  this.couleur, this.tailleEstomac/2,  this.maturite,	// pour créer un nouvel individu
-										this.aProcree,this.meurtFaim);
-								Gestionnaire.addAnimal(animal);								// on ajoute l'animal au gestionnaire
-								break;														//			l'animal se reproduit et arrête de vérifier 
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+	public abstract void seReproduire();
+
 	/**
 	 * Cette méthode s'active si l'estomac de l'animal est vide. Elle lui compte un certain nombre de tours avant qu'il 
 	 * ne meure de faim.
@@ -368,25 +335,23 @@ public abstract class Animal {
 	 * Cette fonction est lancée dans le getionnaire à chaque début de tour
 	 */
 	public void seDecomposer(){
-		if (this.getEmplacement().getACadavre() == true) {		// on vérifie que l'animal ne s'est pas encore décomposé
+		if (this.getEmplacement().getCadavre() == true) {		// on vérifie que l'animal ne s'est pas encore décomposé
 
 			//		une fois que la viande arrive à 0 l'animal disparait de la case
 			// 		on met le test avant l'action de faire perdre de la viande à l'animal
 			//		pour ne pas que le gestionnaire fasse perdre de la viande à un animal déjà décomposé
 			// si la viande est déjà à 0 alors on ne décompose pas l'animal et on ne met plus le aCadavre de la case sur false
 
-			if (viande == 0 || viande < 0) {
-				this.viande = 0;
-				break;
+			if (this.getViande() == 0 || this.getViande() < 0) {
+				this.setViande(0);
 			}
 			//		l'animal perd jusqu'à 2 de viande par tour
 			// on met un deucième test ici pour éviter que si il y a 2 animaux morts sur la même case 
 			// l'un d'eux ne se décompose pas si aCadavre prend faux à chaque tour
-			this.viande = this.viande - (Gestionnaire.getTour() - this.dateDeces)%2;
-			if (viande == 0 || viande < 0) {
-				this.viande = 0;
+			this.setViande(this.getViande() - (Gestionnaire.getTour() - this.dateDeces)%2);
+			if (this.getViande() == 0 || this.getViande() < 0) {
+				this.setViande(0);
 				this.getEmplacement().setACadavre(false);
-				break;
 			}
 		}
 	}

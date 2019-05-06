@@ -1,5 +1,8 @@
 package ecosysteme;
 
+import Gestion.Gestionnaire;
+import animaux.Animal;
+
 public abstract class Case {
 	
 	private /*abstract*/ int typeOccupation;//pk quand jmets abstract il gueule
@@ -21,12 +24,21 @@ public abstract class Case {
 		return typeOccupation;
 	}
 */
-	public boolean getEstvide() {
+	public boolean getEstVide() {
 		return estVide;
+	}
+	
+	public void setEstVide(boolean b) {
+		// TODO Auto-generated method stub
+		this.estVide = b;
 	}
 
 	public boolean getCadavre() {
 		return cadavre;
+	}
+	
+	public void setACadavre(boolean b) {
+		this.cadavre = b;
 	}
 
 	public int[] getPosition() {
@@ -40,12 +52,27 @@ public abstract class Case {
 	public int getY() {
 		return position[1];
 	}
+	
+	public abstract int getNourriture();
+	
+	public abstract void setNourriture(int nourriture);
+	
+	public abstract void recuperation();
 
-	public void setEstVide(boolean b) {
-		// TODO Auto-generated method stub
-		this.estVide = b;
+	
+	public Animal getAnimal() {
+		Animal animalRetour = null;
+		if (this.getEstVide() == false) {
+			for (Animal animal : Gestionnaire.getAnimaux()) {
+				if (animal.getEmplacement().getPosition().equals(this.getPosition())){
+					animalRetour = animal;
+				}
+			}
+		}
+		return animalRetour;
 	}
 
 	public abstract int getTypeOccupation();// mettre les return ''sable, ou 0 etc'' dans les classes filles
+	
 	
 }

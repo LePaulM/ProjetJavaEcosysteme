@@ -14,6 +14,18 @@ public class TerrainNu extends Case{
 	public int getTypeOccupation() {
 		return 6;
 	}
+	
+	@Override
+	public int getNourriture() {
+		return 0;
+	}
 
+	@Override
+	public void setNourriture(int nourriture) {		
+	}
+
+	@Override
+	public void recuperation() {
+	}
 	
 }

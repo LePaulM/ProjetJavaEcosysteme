@@ -16,7 +16,7 @@ public abstract class Grille {
 	/**
 	 * attribut qui gere la grille, sous forme de matrice
 	 */
-	private ArrayList<ArrayList<Case>> grille;
+	private static ArrayList<ArrayList<Case>> grille;
 
 
 	/**
@@ -37,12 +37,12 @@ public abstract class Grille {
 	}
 	/**
 	 * Une methode (ou getter ??) qui recupere le contenu de la grille a une position (x,y)
-	 * Cette méthode doit récupérer la case présente à la position (x, y normalement - Paul
+	 * Cette mï¿½thode doit rï¿½cupï¿½rer la case prï¿½sente ï¿½ la position (x, y normalement - Paul
 	 * @param x
 	 * @param y
 	 * @return
 	 */
-	public Case getCase(int x, int y) {
+	public static Case getCase(int x, int y) {
 		return grille.get(x).get(y);
 	}
 
@@ -79,7 +79,7 @@ public abstract class Grille {
 	 */
 
 	/**
-	 * Une methode qui cree les buissons, applicable a toutes les classes filles, c'est une génération dans l'espace aléatoirement d'une quantitee de buisson definie en parametre. Lors de la creation de la grille un buisson ne peut etre place ni sur un autre buisson, ni sur aucun autre sol excepte l'herbe et le sable.
+	 * Une methode qui cree les buissons, applicable a toutes les classes filles, c'est une gï¿½nï¿½ration dans l'espace alï¿½atoirement d'une quantitee de buisson definie en parametre. Lors de la creation de la grille un buisson ne peut etre place ni sur un autre buisson, ni sur aucun autre sol excepte l'herbe et le sable.
 	 * @param buisson
 	 */
 	//nouvelle version
@@ -109,7 +109,7 @@ public abstract class Grille {
 	}
 
 	/**
-	 * Une methode qui cree les arbres, applicable a toutes les classes filles, c'est une génération dans l'espace aléatoirement d'une quantitee d'arbre definie en parametre. Un arbres est grand et donc occupe plusieurs cases. Lors de la creation de la grille un arbre ne peut etre place sur aucun autre sol excepte l'herbe, le sable et les buissons, il ne peut superposer que legerment un autre arbre.
+	 * Une methode qui cree les arbres, applicable a toutes les classes filles, c'est une gï¿½nï¿½ration dans l'espace alï¿½atoirement d'une quantitee d'arbre definie en parametre. Un arbres est grand et donc occupe plusieurs cases. Lors de la creation de la grille un arbre ne peut etre place sur aucun autre sol excepte l'herbe, le sable et les buissons, il ne peut superposer que legerment un autre arbre.
 	 * @param arbre
 	 */
 	public void creationArbre(int arbre) {

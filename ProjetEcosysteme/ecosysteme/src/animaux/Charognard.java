@@ -40,10 +40,10 @@ public abstract class Charognard extends Animal {
 	public void seNourrir(){
 		// si l'animal est vivant
 		if (getEstVivant() == true) {
-			// si l'animal n'est pas rassasié 
+			// si l'animal n'est pas rassasiï¿½ 
 			if (this.getRemplissageEstomac() < this.getTailleEstomac()) {
 				// si la case contient un cadavre, le charognard peut manger
-				if(this.getEmplacement().aCadavre() == true) {
+				if(this.getEmplacement().getCadavre() == true) {
 					if (this.getEmplacement().getAnimal().getViande() > 0) {			// si le cadavre a de la viande
 						if (getRemplissageEstomac() < getTailleEstomac()) {
 							// si la case contient plus de nourriture que l'animal ne peut en manger, 
@@ -68,4 +68,5 @@ public abstract class Charognard extends Animal {
 			}
 		}
 	}
+	public abstract void seReproduire();
 }

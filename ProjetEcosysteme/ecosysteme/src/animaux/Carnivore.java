@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import ecosysteme.Case;
 import ecosysteme.Grille;
 
-public class Carnivore extends Animal{
+public abstract class Carnivore extends Animal{
 	/**
 	 * Constructeur
 	 * @param id
@@ -38,23 +38,31 @@ public class Carnivore extends Animal{
 
 	public void seNourrir(){
 		if (getEstVivant() == false) {
-			break;
+		} else {
 			if (this.getRemplissageEstomac() < this.getTailleEstomac()) {
-				//			Définition des cases adjacentes
-				int case1 = Grille.getGrille()[this.getEmplacement().getX()-1][this.getEmplacement().getY()-1];	// marche avec les coordonn�es de la case
-				Case case2 = Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()-1);
-				Case case3 = Grille.getCase(this.getEmplacement().getX()+1,this.getEmplacement().getY()-1);
-				Case case4 = Grille.getCase(this.getEmplacement().getX()-1,this.getEmplacement().getY());
-				Case case5 = Grille.getCase(this.getEmplacement().getX()+1,this.getEmplacement().getY());
-				Case case6 = Grille.getCase(this.getEmplacement().getX()-1,this.getEmplacement().getY()+1);
-				Case case7 = Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()+1);
-				Case case8 = Grille.getCase(this.getEmplacement().getX()+1,this.getEmplacement().getY()+1);
 				//		Création de la liste des cases adjacentes
-				ArrayList<Case> cases = new ArrayList<Case>(case1,case2,case3,case4,case5,case6,case7, case8);
+				ArrayList<Case> cases = new ArrayList<Case>();
+				//			Définition des cases adjacentes
+				Case case1 = Grille.getCase(this.getEmplacement().getX()-1,this.getEmplacement().getY()-1);	// marche avec les coordonn�es de la case
+				cases.add(case1);
+				Case case2 = Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()-1);
+				cases.add(case2);
+				Case case3 = Grille.getCase(this.getEmplacement().getX()+1,this.getEmplacement().getY()-1);
+				cases.add(case3);
+				Case case4 = Grille.getCase(this.getEmplacement().getX()-1,this.getEmplacement().getY());
+				cases.add(case4);
+				Case case5 = Grille.getCase(this.getEmplacement().getX()+1,this.getEmplacement().getY());
+				cases.add(case5);
+				Case case6 = Grille.getCase(this.getEmplacement().getX()-1,this.getEmplacement().getY()+1);
+				cases.add(case6);
+				Case case7 = Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()+1);
+				cases.add(case7);
+				Case case8 = Grille.getCase(this.getEmplacement().getX()+1,this.getEmplacement().getY()+1);
+				cases.add(case8);
 				for (Case c : cases) {
 					// si la case contient un animal, et que l'animal n'est pas un autre carnivore, 
 					// le carnivore le tue
-					if(c.estVide() == true || c.getAnimal().getEspece() != this.getEspece()) {
+					if(c.getEstVide() == true || c.getAnimal().getEspece() != this.getEspece()) {
 						c.getAnimal().decede();
 						if (getRemplissageEstomac() < getTailleEstomac()) {
 							// si l'animal tué contient plus de nourriture que l'animal n'a de place dans son estomac, 
@@ -81,4 +89,5 @@ public class Carnivore extends Animal{
 			}
 		}
 	}
+	public abstract void seReproduire();
 }

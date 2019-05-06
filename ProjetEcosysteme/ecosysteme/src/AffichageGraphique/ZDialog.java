@@ -18,6 +18,12 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import ecosysteme.Jungle;
+import ecosysteme.MassifMontagneux;
+import ecosysteme.Savane;
+import ecosysteme.Steppe;
+import ecosysteme.Syberie;
+
 public class ZDialog extends JDialog{
 	private ZDialogInfo zInfo = new ZDialogInfo();
 	//private Personnalise perso = new Personnalise("Personnalisé");
@@ -158,6 +164,26 @@ public class ZDialog extends JDialog{
 					JOptionPane jop = new JOptionPane();
 					jop.showMessageDialog(null, zInfo.toString(), "Options choisies", JOptionPane.INFORMATION_MESSAGE);
 					setVisible(false); 
+					if (environnementChoisi.equals("Montagnes")){
+						MassifMontagneux massif = new MassifMontagneux(70);
+						massif.creationGrille();
+					}
+					if (environnementChoisi.equals("Savane")){
+						Savane sav=new Savane(60);
+						sav.creationGrille();
+					}
+					if (environnementChoisi.equals("Savane")){
+						Syberie sib = new Syberie(30);
+						sib.creationGrille();
+					}
+					if (environnementChoisi.equals("Savane")){
+						Jungle jun = new Jungle(60);
+						jun.creationGrille();
+					}
+					if (environnementChoisi.equals("Savane")){
+						Steppe steppe = new Steppe (60);
+						steppe.creationGrille();
+					}
 				}
 			}
 
