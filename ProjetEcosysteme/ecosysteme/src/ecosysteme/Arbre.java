@@ -2,25 +2,26 @@ package ecosysteme;
 
 import Gestion.Gestionnaire;
 
-public class Buisson extends Case{
-
+public class Arbre extends Case{
 	/**
-	 * stock de nourriture que contient le buisson
+	 * stock de nourriture que contient la foret
 	 */
 	private int nourriture;
 
 	/**
 	 * Constructeur
 	 */
-	public Buisson(int[] position) {
-		super(1, true, false, position);
-		this.nourriture=10;
+	public Arbre(int[] position) {
+		super(3, true, false, position);
+		this.nourriture=20;
 	}
 	
-	public Buisson(int typeOccupation, boolean estvide, boolean cadavre, int[] position) {
-		super(typeOccupation, estvide, cadavre, position);
-		this.nourriture=10;
+	
+	public Arbre(int typeOccupation, boolean estvide, boolean cadavre, int[] position) {
+		super(3, estvide, cadavre, position);
+		this.nourriture=20;
 	}
+
 
 	/**
 	 * Getter
@@ -30,6 +31,7 @@ public class Buisson extends Case{
 		return nourriture;
 	}
 
+
 	/**
 	 * Setter
 	 * @param nourriture
@@ -37,10 +39,12 @@ public class Buisson extends Case{
 	public void setNourriture(int nourriture) {
 		this.nourriture = nourriture;
 	}
+	
+
 
 
 	/**
-	 * methode qui recharge le stock de nouriiture que contient le buisson si il est vide
+	 * méthode qui recharge le stock de nouriiture que contient le buisson si il est vide
 	 */
 	public void recuperation() {
 
@@ -53,14 +57,15 @@ public class Buisson extends Case{
 			while(recuperation <= 3) {
 				recuperation = Gestionnaire.getTour() - tourDeRecup;
 				if(recuperation==3) {
-					this.nourriture=10;
+					this.nourriture=20;
 				}
 			}
 		}
 	}
-	
+
+	@Override
 	public int getTypeOccupation() {
-		return 1;
+		return 3;
 	}
 	
 }

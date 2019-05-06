@@ -22,21 +22,27 @@ public class Steppe extends Grille{
 			double b=Math.random()*getTaille();
 			int x=(int)a;
 			int y=(int)b;
-			if(getGrille()[x][y]==2) {
+			if(getGrille().get(x).get(y).getTypeOccupation()==2) {
 				continue;
 			}
 			if((x-1)<0 || (x+1)>(getTaille()-1) || (y-1)<0 || (y+1)>(getTaille()-1)) { //gestion des bordures
 				continue;
 			}
-			getGrille()[x-1][y-1]=2;
-			getGrille()[x-1][y]=2;
-			getGrille()[x-1][y+1]=2;
-			getGrille()[x][y-1]=2;
-			getGrille()[x][y]=2;
-			getGrille()[x][y+1]=2;
-			getGrille()[x+1][y-1]=2;
-			getGrille()[x+1][y]=2;
-			getGrille()[x+1][y+1]=2;
+			
+			int[] coord = new int[2];
+			coord[0]=x;
+			coord[1]=y;
+			Eau eau = new Eau(coord);
+			getGrille().get(x-1).set(y-1, eau);
+			getGrille().get(x-1).set(y, eau);
+			getGrille().get(x-1).set(y+1, eau);
+			getGrille().get(x).set(y-1, eau);
+			getGrille().get(x).set(y, eau);
+			getGrille().get(x).set(y+1, eau);
+			getGrille().get(x+1).set(y-1, eau);
+			getGrille().get(x+1).set(y, eau);
+			getGrille().get(x+1).set(y+1, eau);
+			
 			i=i+1;
 		}
 	}

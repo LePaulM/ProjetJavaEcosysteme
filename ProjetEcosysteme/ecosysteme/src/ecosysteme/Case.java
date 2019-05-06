@@ -1,23 +1,31 @@
 package ecosysteme;
 
-public class Case {
+public abstract class Case {
 	
-	private int typeOccupation;
+	private /*abstract*/ int typeOccupation;//pk quand jmets abstract il gueule
 	private boolean estVide;
 	private boolean cadavre;
 	private int position[];
 	
-	public Case() {};
 	
+	
+	public Case(int typeOccupation, boolean estvide, boolean cadavre, int[] position) {
+		super();
+		this.typeOccupation = typeOccupation;
+		this.estVide = estvide;
+		this.cadavre = cadavre;
+		this.position = position;
+	}
+	/*
 	public int getTypeOccupation() {
 		return typeOccupation;
 	}
-
-	public boolean isEstvide() {
+*/
+	public boolean getEstvide() {
 		return estVide;
 	}
 
-	public boolean isCadavre() {
+	public boolean getCadavre() {
 		return cadavre;
 	}
 
@@ -26,22 +34,11 @@ public class Case {
 	}
 	
 	public int getX() {
-		// TODO Auto-generated method stub
 		return position[0];
 	}
 
 	public int getY() {
-		// TODO Auto-generated method stub
 		return position[1];
-	}
-	
-
-	public Case(int typeOccupation, boolean estvide, boolean cadavre, int[] position) {
-		super();
-		this.typeOccupation = typeOccupation;
-		this.estVide = estvide;
-		this.cadavre = cadavre;
-		this.position = position;
 	}
 
 	public void setEstVide(boolean b) {
@@ -49,6 +46,6 @@ public class Case {
 		this.estVide = b;
 	}
 
-
+	public abstract int getTypeOccupation();// mettre les return ''sable, ou 0 etc'' dans les classes filles
 	
 }

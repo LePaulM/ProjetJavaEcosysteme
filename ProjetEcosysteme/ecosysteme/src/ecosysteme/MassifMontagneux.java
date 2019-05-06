@@ -21,7 +21,11 @@ public class MassifMontagneux extends Grille{
 			double a=(x*x);
 			double b=(Math.pow(premiere,2));
 			for(int y=0;y<=(int)(getTaille()/4)*Math.sqrt(1-(a/b));y++) { 
-				getGrille()[x][y]=7;
+				int[] coord = new int[2];
+				coord[0]=x;
+				coord[1]=y;
+				Montagne montagne = new Montagne(coord);
+				getGrille().get(x).set(y, montagne);
 			}
 			}
 		// deuxieme bloc
@@ -29,7 +33,12 @@ public class MassifMontagneux extends Grille{
 			double a=(x*x);
 			double b=(Math.pow(3*getTaille()/4,2));
 			for(int y=(int)(-(getTaille()/4)*Math.sqrt(1-(a/b))+2*(getTaille()/4)); y<=(getTaille()/2);y++) {
-				getGrille()[x][y]=7;
+				
+				int[] coord = new int[2];
+				coord[0]=x;
+				coord[1]=y;
+				Montagne montagne = new Montagne(coord);
+				getGrille().get(x).set(y, montagne);
 			}
 			}
 		// troisieme bloc
@@ -37,7 +46,12 @@ public class MassifMontagneux extends Grille{
 			double a=(x*x);
 			double b=(Math.pow(3*getTaille()/4,2));
 			for(int y=getTaille()/2;y<=(int)(getTaille()/4)*Math.sqrt(1-(a/b))+getTaille()/2;y++) {
-				getGrille()[x][y]=7;
+				
+				int[] coord = new int[2];
+				coord[0]=x;
+				coord[1]=y;
+				Montagne montagne = new Montagne(coord);
+				getGrille().get(x).set(y, montagne);
 			}
 			}
 		// quatrieme bloc
@@ -45,7 +59,12 @@ public class MassifMontagneux extends Grille{
 			double a=(x*x);
 			double b=(Math.pow(4*getTaille()/5,2));
 			for(int y=(int)((getTaille()/4)-(getTaille()/4)*Math.sqrt(1-(a/b))+3*getTaille()/4); y<getTaille();y++) {
-				getGrille()[x][y]=7;
+				
+				int[] coord = new int[2];
+				coord[0]=x;
+				coord[1]=y;
+				Montagne montagne = new Montagne(coord);
+				getGrille().get(x).set(y, montagne);
 			}
 			}
 	}
@@ -58,25 +77,43 @@ public class MassifMontagneux extends Grille{
 		//premiere riviere
 		int y=(int)this.getTaille()/4;
 		for(int x=(int)this.getTaille()/9;x<this.getTaille();x++) {
-			if(getGrille()[x][y-1]==7||getGrille()[x][y-1]==5) {
-				getGrille()[x][y]=2;
+			if(getGrille().get(x).get(y-1).getTypeOccupation()==7 ||
+				getGrille().get(x).get(y-1).getTypeOccupation()==5) {
+				int[] coord = new int[2];
+				coord[0]=x;
+				coord[1]=y;
+				Eau eau = new Eau(coord);
+				getGrille().get(x).set(y, eau);
 			}
 			else {
-				getGrille()[x][y-1]=2;
-				getGrille()[x][y]=2;
-				getGrille()[x][y+1]=2;
+				int[] coord = new int[2];
+				coord[0]=x;
+				coord[1]=y;
+				Eau eau = new Eau(coord);
+				getGrille().get(x).set(y-1, eau);
+				getGrille().get(x).set(y, eau);
+				getGrille().get(x).set(y+1, eau);
 			}
 		}
 		//seconde riviere
 		int v=(int)3*this.getTaille()/4;
 		for(int x=(int)this.getTaille()/9;x<this.getTaille();x++) {
-			if(getGrille()[x][v-1]==7||getGrille()[x][v-1]==5) {
-				getGrille()[x][v]=2;
+			if(getGrille().get(x).get(v-1).getTypeOccupation()==7 ||
+				getGrille().get(x).get(v-1).getTypeOccupation()==5) {
+				int[] coord = new int[2];
+				coord[0]=x;
+				coord[1]=y;
+				Eau eau = new Eau(coord);
+				getGrille().get(x).set(v, eau);
 			}
 			else {
-				getGrille()[x][v-1]=2;
-				getGrille()[x][v]=2;
-				getGrille()[x][v+1]=2;
+				int[] coord = new int[2];
+				coord[0]=x;
+				coord[1]=y;
+				Eau eau = new Eau(coord);
+				getGrille().get(x).set(v-1, eau);
+				getGrille().get(x).set(v, eau);
+				getGrille().get(x).set(v+1, eau);
 			}
 		}
 	}
@@ -88,7 +125,11 @@ public class MassifMontagneux extends Grille{
 		//creation du glacier
 		for(int x=0;x<=(int)(this.getTaille()/4)*0.6;x++) {
 			for(int y=0;y<(int)(this.getTaille());y++){
-				getGrille()[x][y]=5;
+				int[] coord = new int[2];
+				coord[0]=x;
+				coord[1]=y;
+				Neige neige = new Neige(coord);
+				getGrille().get(x).set(y, neige);
 			}
 		}
 		//creation de neige de facon aleatoire dans la montagne.
@@ -99,11 +140,15 @@ public class MassifMontagneux extends Grille{
 			double b=Math.random()*this.getTaille();
 			int x=(int)a;
 			int y=(int)b;
-			if(getGrille()[x][y]==5) {
+			if(getGrille().get(x).get(y).getTypeOccupation()==5) {
 				continue;
 			}
-			if (getGrille()[x][y]==7) {
-				getGrille()[x][y]=5;
+			if (getGrille().get(x).get(y).getTypeOccupation()==7) {
+				int[] coord = new int[2];
+				coord[0]=x;
+				coord[1]=y;
+				Neige neige1 = new Neige(coord);
+				getGrille().get(x).set(y, neige1);
 			}
 			i=i+1;
 		}

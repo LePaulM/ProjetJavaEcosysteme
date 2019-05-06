@@ -23,13 +23,18 @@ public class Syberie extends Grille{
 			double b=Math.random()*getTaille();
 			int x=(int)a;
 			int y=(int)b;
-			if(getGrille()[x][y]==5) {
+			if(getGrille().get(x).get(y).getTypeOccupation()==5) {
 				continue;
 			}
-			if (getGrille()[x][y]==2) {
+			if (getGrille().get(x).get(y).getTypeOccupation()==2) {
 				continue;
 			}
-			getGrille()[x][y]=5;
+			int[] coord = new int[2];
+			coord[0]=x;
+			coord[1]=y;
+			Neige neige1 = new Neige(coord);
+			getGrille().get(x).set(y, neige1);
+
 			i=i+1;
 		}
 	}
@@ -43,7 +48,11 @@ public class Syberie extends Grille{
 		double b = getTaille()*0.8;//axe des y
 		for(int x=0;x<=(int)(a);x++) {
 			for(int y=0;y<=(int)(b*Math.sqrt(1-((x*x)/(a*a))));y++){
-				getGrille()[x][y]=7;
+				int[] coord = new int[2];
+				coord[0]=x;
+				coord[1]=y;
+				Montagne montagne = new Montagne(coord);
+				getGrille().get(x).set(y, montagne);
 			}
 		}
 	}
@@ -59,45 +68,66 @@ public class Syberie extends Grille{
 	*/
 	for(int x=(int)getTaille()/7;x<=(int)3*getTaille()/7;x++) {
 			int y=(int)getTaille()/4;
-			getGrille()[x][y-1]=2;
-			getGrille()[x][y]=2;
-			getGrille()[x][y+1]=2;
+			int[] coord = new int[2];
+			coord[0]=x;
+			coord[1]=y;
+			Eau eau = new Eau(coord);
+			getGrille().get(x).set(y-1, eau);
+			getGrille().get(x).set(y, eau);
+			getGrille().get(x).set(y+1, eau);
+			
 		}
 	/**
 	 * troncon 2
 	*/
 	for(int x=(int)3*getTaille()/7-2;x<=(int)5*getTaille()/7;x++) {
 		int y=(int)getTaille()/4+3;
-		getGrille()[x][y-1]=2;
-		getGrille()[x][y]=2;
-		getGrille()[x][y+1]=2;
+		int[] coord = new int[2];
+		coord[0]=x;
+		coord[1]=y;
+		Eau eau = new Eau(coord);
+		getGrille().get(x).set(y-1, eau);
+		getGrille().get(x).set(y, eau);
+		getGrille().get(x).set(y+1, eau);
 	}
 	/**
 	 * troncon 3
 	 */
 	for(int y=(int)getTaille()/4+5;y<=(int)2*getTaille()/4;y++) {
 		int x=(int)5*getTaille()/7-1;
-		getGrille()[x-1][y]=2;
-		getGrille()[x][y]=2;
-		getGrille()[x+1][y]=2;
+		int[] coord = new int[2];
+		coord[0]=x;
+		coord[1]=y;
+		Eau eau = new Eau(coord);
+		getGrille().get(x-1).set(y, eau);
+		getGrille().get(x).set(y, eau);
+		getGrille().get(x+1).set(y, eau);
 	}
 	/**
 	 * troncon 4
 	 */
 	for(int x=(int)5*getTaille()/7-2;x<(int)getTaille();x++) {
 		int y=(int)2*getTaille()/4+2;
-		getGrille()[x][y-1]=2;
-		getGrille()[x][y]=2;
-		getGrille()[x][y+1]=2;
+		int[] coord = new int[2];
+		coord[0]=x;
+		coord[1]=y;
+		Eau eau = new Eau(coord);
+		getGrille().get(x).set(y-1, eau);
+		getGrille().get(x).set(y, eau);
+		getGrille().get(x).set(y+1, eau);
 	}
 	/**
 	 * troncon 5
 	 */
 	for(int y=(int)getTaille()/4+3;y<=(int)3*getTaille()/4;y++) {
 		int x=(int)getTaille()/2;
-		getGrille()[x-1][y]=2;
-		getGrille()[x][y]=2;
-		getGrille()[x+1][y]=2;
+		int[] coord = new int[2];
+		coord[0]=x;
+		coord[1]=y;
+		Eau eau = new Eau(coord);
+		getGrille().get(x-1).set(y, eau);
+		getGrille().get(x).set(y, eau);
+		getGrille().get(x+1).set(y, eau);
 	}
 }
 	
@@ -119,6 +149,5 @@ public class Syberie extends Grille{
 		syberie.creationEau();
 		syberie.afficher();
 	}
-	
 	
 }

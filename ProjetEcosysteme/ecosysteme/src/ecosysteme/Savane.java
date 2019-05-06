@@ -16,41 +16,45 @@ public class Savane extends Grille{
 	 */
 	@Override
 	public void creationEau() {
-		/*
-		int y=(int)this.getTaille()/3;
-		for(int x=(int)this.getTaille()/9;x<this.getTaille();x++) {
-			if(getGrille()[x][y-1]==7||getGrille()[x][y-1]==5) {
-				getGrille()[x][y]=2;
-			}
-			else {
-				getGrille()[x][y-1]=2;
-				getGrille()[x][y]=2;
-				getGrille()[x][y+1]=2;
-			}
-		}
-		*/
+		
 		//quart en haut a gauche
 		for(int x=(int)(0.325*getTaille());x>=(int)(0.2*getTaille());x--) {
 			for(int y=(int)(0.325-Math.sqrt(Math.pow(0.125*getTaille(),2)-Math.pow(x-0.325*getTaille(),2))+0.2*getTaille());y<=(int)(0.325*getTaille());y++) {
-				getGrille()[x][y]=2;
+				int[] coord = new int[2];
+				coord[0]=x;
+				coord[1]=y;
+				Eau eau = new Eau(coord);
+				getGrille().get(x).set(y, eau);
 			}
 			}
 		//quart en bas a gauche
 		for(int x=(int)(0.325*getTaille());x<=(int)(0.45*getTaille());x++) {
 			for(int y=(int)(0.325-Math.sqrt(Math.pow(0.125*getTaille(),2)-Math.pow(x-0.325*getTaille(),2))+0.2*getTaille());y<=(int)(0.325*getTaille());y++) {
-				getGrille()[x][y]=2;
+				int[] coord = new int[2];
+				coord[0]=x;
+				coord[1]=y;
+				Eau eau = new Eau(coord);
+				getGrille().get(x).set(y, eau);
 			}
 			}
 		//quart en haut a droite
 		for(int x=(int)(0.325*getTaille());x>=(int)(0.2*getTaille());x--){
 			for(int y=(int)(0.325*getTaille());y<=(int)(Math.sqrt(Math.pow(0.125*getTaille(),2)-Math.pow(x-0.325*getTaille(),2))+0.325*getTaille());y++) { 
-				getGrille()[x][y]=2;
+				int[] coord = new int[2];
+				coord[0]=x;
+				coord[1]=y;
+				Eau eau = new Eau(coord);
+				getGrille().get(x).set(y, eau);
 			}
 			}
 		//quart en bas a droite
 		for(int x=(int)(0.325*getTaille());x<=(int)(0.45*getTaille());x++) {
 			for(int y=(int)(0.325*getTaille());y<=(int)(Math.sqrt(Math.pow(0.125*getTaille(),2)-Math.pow(x-0.325*getTaille(),2))+0.325*getTaille());y++) { 
-				getGrille()[x][y]=2;
+				int[] coord = new int[2];
+				coord[0]=x;
+				coord[1]=y;
+				Eau eau = new Eau(coord);
+				getGrille().get(x).set(y, eau);
 			}
 			}
 			

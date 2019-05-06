@@ -12,9 +12,16 @@ public class Herbe extends Case{
 	/**
 	 * Constructeur
 	 */
-	public Herbe(){
+	public Herbe(int[] position) {
+		super(0, true, false, position);
 		this.nourriture=10;
 	}
+	
+	public Herbe(int typeOccupation, boolean estvide, boolean cadavre, int[] position) {
+		super(0, estvide, cadavre, position);
+		this.nourriture=10;
+	}
+
 
 	/**
 	 * Getter
@@ -35,7 +42,7 @@ public class Herbe extends Case{
 
 
 	/**
-	 * méthode qui recharge le stock de nourriture que contient le buisson si il est vide
+	 * methode qui recharge le stock de nourriture que contient le buisson si il est vide
 	 */
 	public void recuperation() {
 
@@ -53,4 +60,14 @@ public class Herbe extends Case{
 			}
 		}
 	}
+	
+	public int getTypeOccupation() {
+		return 0;
+	}
+	
 }
+/*
+ public void afficher() {
+	 System.out.println(nourriture);
+ }
+*/
