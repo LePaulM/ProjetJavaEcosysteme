@@ -1,32 +1,44 @@
 package animaux;
 import java.awt.Color;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Random;
 
-import AffichageGraphique.ZDialog;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 import Gestion.Gestionnaire;
 import ecosysteme.Case;
 import ecosysteme.Grille;
 /**
- * Cette classe définit les vautours en rédéfinissant les méthodes de la classe mère charognard.
- * @author Paul,Armand et Louise
+ * 
+ * @author formation
  *
  */
 
 public class Vautour extends Charognard{
 	/**
 	 * Constructeur
-	 * @param dateNaissance : int numéro du tour où l'animal est né
-	 * @param emplacement : objet de type Case sur laquelle se trouve l'animal
-	 * @param tpDecomposition : int temps que l'animal met à disparaitre après sa mort. Laisse du temps aux charognards pour manger le cadavre
-	 * @param couleur : Color couleur de l'animal sur la carte
-	 * @param remplissageEstomac : int définit l'appétit de l'animal. plus ce nombre est faible plus l'animal aura besoin de nourriture ce nombre décroit chaque tour
-	 * @param maturite : définit l'age auquel l'animal est assez grand pour se reproduire
-	 * @param aProcree : si l'animal a procréé récemment
-	 * @param meurtFaim : Indique le nombre de tours restants lorsque l'animal est en état de famine
+	 * @param id
+	 * @param dateNaissance
+	 * @param dateDeces
+	 * @param accesForet
+	 * @param esperanceVie
+	 * @param vitesse
+	 * @param estVivant
+	 * @param tpDecomposition
+	 * @param espece
+	 * @param tailleEstomac
+	 * @param remplissageEstomac
+	 * @param viande
+	 * @param maturite
+	 * @param aProcree
+	 * @param meurtFaim
 	 */
-	public Vautour(int dateNaissance,  Case emplacement,int tpDecomposition, Color couleur, int remplissageEstomac,  
-			int maturite, boolean aProcree,int meurtFaim) {
-		super(dateNaissance, emplacement, tpDecomposition,
+	public Vautour(int dateNaissance,  Case emplacement,
+			int tpDecomposition,  Color couleur, int remplissageEstomac,  int maturite,
+			boolean aProcree,int meurtFaim) {
+		super(dateNaissance, emplacement, tpDecomposition,couleur,
 				remplissageEstomac,maturite,aProcree,meurtFaim);
 
 		// on donne un id à l'animal
@@ -36,31 +48,30 @@ public class Vautour extends Charognard{
 		esperanceVie = 20;
 		esperanceVie = esperanceVie + (int)(Math.random() * this.esperanceVie/5);
 
-		// le vautour a accès aux cases de foret
+		// le renard a accès aux cases de foret
 		accesForet = true;
 
-		// le vautour a une vitesse de 8
+		// le renard a une vitesse de 4
 		vitesse = 8;
 
-		// le vautour contient 1 de viande à la naissance
+		// la renard contient 1 viande à la naissance
 		viande = 1;
-		
-		//le vautour est gris
-		couleur=Color.gray;
 	}
+	
+	//définit l'image de l'animal
+		File vautourFile = new File("./ecosysteme/ressources/vautour.png");
+		Icon vautour = new ImageIcon(vautourFile.getAbsolutePath());
 
 	/**
 	 * 	Cette méthode permet à 2 animaux de la même espèce de se reproduire s'ils sont sur des cases adjacentes et de produire ainsi 
 	 *  un nouvel animal de la même espèce.
 	 */
-	@Override
 	public void seReproduire() {
 		if (this.getEstVivant() == false) {					// on vérifie que l'animal est vivant (on ne se reproduit que vivant, c'est la règle...)
 		} else {
 			if (this.getAProcree() == true) {				// on vérifie que l'animal est mature et ne s'est pas reproduit récemment
 			} else {
-				if (Gestionnaire.getAnimaux().size() == ZDialog.getAnimauxTot()) {		// on vérifie qu'il n'y a pas trop d'animaux sur le plateau
-				} else {
+
 				// il faut mettre la reproduction dans les classes des animaux 
 				// car Animal est une classe abstraite (on ne peut pas instancier un objet d'une classe abstraite
 				// Création de la liste des cases adjacentes
@@ -90,7 +101,7 @@ public class Vautour extends Charognard{
 							if (c.getAnimal().getAProcree() == false) {						// et enfin si l'autre animal n'a pas déjà procréé récemment 
 								this.setAProcree(true);											// 			la variable permettant de savoir si l'animal a procree devient true
 								for (Case cbis : cases){											// 			on cherche ensuite  
-									if (cbis.getEstVide() == true) {									//			une case vide 
+									if (c.getEstVide() == true) {									//			une case vide 
 										Animal vautour = new Vautour (Gestionnaire.getTour(),cbis,
 												this.getTempsDecomposition(),  this.couleur, this.tailleEstomac/2,  this.getMaturite(),	// pour créer un nouvel individu
 												this.getAProcree(),this.getMeurtFaim());
@@ -104,15 +115,14 @@ public class Vautour extends Charognard{
 			}
 		}
 	}
-	}
 
-	/**
-	 * définition de la taille de l'estomac et de la viande disponible sur l'animal en fonction de son âge et de 
-	 * son espèce.
-	 * cette fonction est activée par le Gestionnaire en début de tour
-	 */
+
 	public void croissance() {
-
+		/*
+		 * définition de la taille de l'estomac et de la viande disponible sur l'animal en fonction de son âge et de 
+		 * son espèce.
+		 * cette fonction est activée par le Gestionnaire en début de tour
+		 */
 		if ((Gestionnaire.getTour() - this.getDateNaissance())<=(esperanceVie/4)) {
 			setViande(1);
 			setTailleEstomac(1);

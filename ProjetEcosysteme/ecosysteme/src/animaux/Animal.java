@@ -8,13 +8,7 @@ import Gestion.Gestionnaire;
 import ecosysteme.Case;
 import ecosysteme.Grille;
 
-/**
- * Cette classe abstraite définit l'ensemble des attributs composant un animal ainsi 
- * que les différentes méthodes lui permettant de se déplacer, se nourrir et de gérer sa vie
- * et sa décomposition. 
- * @author Paul,Armand et Louise
- *
- */
+
 
 public abstract class Animal {
 	int id;
@@ -35,7 +29,7 @@ public abstract class Animal {
 	private boolean aProcree;
 	private int meurtFaim;
 
-
+	/**
 	/**
 	 * Constructeur	
 	 * @param id : identifiant de l'individu, cet identifiant permet au gestionnaire de faire "jouer" les individus
@@ -52,10 +46,10 @@ public abstract class Animal {
 
 
 	// il faut changer famine() de place dans les diagrammes de sequence
-	//ca ne sert à rien de faire des tests sur des animaux morts - Paul
+	//ca ne sert à rien de faire des tests sur des animaux mort - Paul
 
 	public Animal(int dateNaissance,  Case emplacement,
-			int tpDecomposition,  int remplissageEstomac,  int maturite,
+			int tpDecomposition,  Color couleur, int remplissageEstomac,  int maturite,
 			boolean aProcree,int meurtFaim) {
 
 		this.id = Gestionnaire.getAnimaux().size() + 1;
@@ -63,6 +57,7 @@ public abstract class Animal {
 		this.emplacement = emplacement;
 		this.estVivant = true;
 		this.tpDecomposition = tpDecomposition;
+		this.couleur = couleur;
 		this.remplissageEstomac = tailleEstomac/2 % 1;
 		this.maturite = maturite;
 		this.aProcree = aProcree;
@@ -296,13 +291,14 @@ public abstract class Animal {
 		if (caseSuivante.getEstVide() == true) {
 			this.setEmplacement(caseSuivante);
 			caseSuivante.setEstVide(false);
+			
+			Grille.getCase(caseSuivante.getPosition()[0],caseSuivante.getPosition()[1]);
+		
 		} else {
 			this.seDeplacer();
 		}
 	}				
-	/**
-	 * Cette méthode gère la reproduction de l'animal.
-	 */
+
 	public abstract void seReproduire();
 
 	/**
@@ -311,7 +307,7 @@ public abstract class Animal {
 	 */
 	public boolean famine() {
 		if (estVivant == false) {					// si l'animal est decedé 
-			return false;									// on passe à la suite du tour
+			return false;							// on passe à la suite du tour
 		} else if (remplissageEstomac == 0) {		// sinon si l'estomac est vide
 			meurtFaim = meurtFaim - 1;				// le compteur qui dit combien de temps l'animal peut vivre sans manger prend - 1
 			if (meurtFaim == 0) {					// si ce compteur atteint zéro
@@ -323,23 +319,39 @@ public abstract class Animal {
 		return aProcree;
 	}
 
+	public void afficherAnimal() {
+		//Jpanel.repaint()
+		//JPanel.revalidate()
+		//
+		// protected void paintComponent(Graphics g) {
+		//	public void rafraichir (){
+		// on vide le jpanel
+		// this.getContentPane().removeAll();
+		// on le reconstuit a partir de la grille mise a jour
+		// ((JPanelGrille)this.getContentPane()).construire();
+		// this.getContentPane().revalidate();
+	//}
+		//
+		// y a des trucs à faire avec tout ça, peut-êtr evoir avec hugo
+	}
+	
 
 	/**
-	 * Cette méthode s'active lorsque l'animal décède
+	 * cette méthode s'active lorsque l'animal décède
 	 * elle gère le décès de l'animal
 	 */
 	public void decede() {
 
-		this.setEstVivant(false);					// on dit que l'animal n'est plus vivant
+		this.setEstVivant(false);						// on dit que l'animal n'est plus vivant
 		this.setDateDeces(Gestionnaire.getTour());		// on enregistre la date du deces
-		this.emplacement.setEstVide(true);			// la case devient vide (il n'y a plus d'animal dessus)
-		this.emplacement.setACadavre(true);			// la case a un cadavre maintenant
+		this.emplacement.setEstVide(true);				// la case devient vide (il n'y a plus d'animal dessus)
+		this.emplacement.setACadavre(true);				// il y a maintenant un cadavre sur la case
 	}
 
 	/**
 	 * 	Une fois qu'un animal est décédé, il a un certain nombre de tours pour se décomposer, qui est réduit si un charognard le mange.
 	 * 	Cette méthode gère la décomposition et fait disparaitre l'animal de la case et donc de la grille.
-	 *  Elle est lancée dans le getionnaire à chaque début de tour
+	 * Cette fonction est lancée dans le getionnaire à chaque début de tour
 	 */
 	public void seDecomposer(){
 		if (this.getEmplacement().getCadavre() == true) {		// on vérifie que l'animal ne s'est pas encore décomposé

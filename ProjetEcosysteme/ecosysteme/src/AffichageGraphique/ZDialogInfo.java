@@ -4,7 +4,7 @@ public class ZDialogInfo {
 	  private String nom, tplateau,ecostme, nbreAnimaux,tps;
 
 	  public ZDialogInfo(){}
-	  public ZDialogInfo(String nom, String tplateau, String ecostme, String nbreAnimaux, String tps){
+	  public ZDialogInfo(String nom, String tplateau, String ecostme,  String nbreAnimaux,String tps){
 	    this.nom = nom;
 	    this.tplateau = tplateau;
 	    this.ecostme = ecostme;
@@ -42,7 +42,7 @@ public class ZDialogInfo {
 	      str += "taille du plateau " + this.tplateau + "\n";
 	      str += "Choix des écosystèmes : " + this.ecostme + "\n";
 	      str += "Temps de simulation : " + this.tps + "\n";
-	      str += "Nombre d'animaux sur le plateau : " + this.nbreAnimaux + "\n";
+	      str += "Nombre d'animaux sur le plateau au départ : " + this.nbreAnimaux + "\n";
 	    }
 	    else if(this.nom != null && this.tplateau != null && this.ecostme != null && this.nbreAnimaux != null && this.tps != null){
 	      str = "Le nombre d'animaux choisi n'est pas cohérent avec la taille du plateau !";

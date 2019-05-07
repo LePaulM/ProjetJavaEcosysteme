@@ -1,39 +1,44 @@
 package animaux;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 import ecosysteme.Case;
 
+//import java.awt.Color;
 /**
- * Cette classe définit les carnivores hérités de la classe animal.
- * @author Paul,Armand et Louise
+ * 
+ * @author formation
  *
  */
 
 public abstract class Herbivore extends Animal{
 	/**
 	 * Constructeur
-	 * @param dateNaissance : int : numéro du tour où l'animal est né
-	 * @param emplacement : objet de type Case sur laquelle se trouve l'animal
-	 * @param tpDecomposition : int temps que l'animal met à disparaitre après sa mort. Laisse du temps aux charognards pour manger le cadavre
-	 * @param remplissageEstomac : int : définit l'appétit de l'animal. plus ce nombre est faible plus l'animal aura besoin de nourriture ce nombre décroit chaque tour
-	 * @param maturite : définit l'age auquel l'animal est assez grand pour se reproduire
-	 * @param aProcree : si l'animal a procréé récemment 
-	 * @param meurtFaim : Indique le nombre de tours restants lorsque l'animal est en état de famine
+	 * @param id
+	 * @param dateNaissance
+	 * @param dateDeces
+	 * @param accesForet
+	 * @param esperanceVie
+	 * @param vitesse
+	 * @param vivant
+	 * @param tpDecomposition
+	 * @param espece
+	 * @param tailleEstomac
+	 * @param remplissageEstomac
+	 * @param viande
+	 * @param maturite
+	 * @param aProcree
+	 * @param meurtFaim
 	 */
 
 	public Herbivore(int dateNaissance,  Case emplacement, 
-			int tpDecomposition,  int remplissageEstomac,  int maturite,
+			int tpDecomposition,  Color couleur, int remplissageEstomac,  int maturite,
 			boolean aProcree,int meurtFaim) {
-		super(dateNaissance,emplacement,tpDecomposition, 
+		super(dateNaissance,emplacement,tpDecomposition,couleur, 
 				remplissageEstomac, maturite,aProcree,meurtFaim);
 	}
 
-	/**
-	 * Cette méthode remplit l'estomac de l'animal s'il n'est pas déjà plein. 
-	 * La case sur laquelle il est diminue également en quantité de nourriture.
-	 */
-	@Override
 	public void seNourrir(){
 		if (this.getRemplissageEstomac() < this.getTailleEstomac()) {
 			// si la case est de type "Herbe" (0), "Buisson" (1) ou Foret (3), l'herbivore peut manger
@@ -60,10 +65,5 @@ public abstract class Herbivore extends Animal{
 			}
 		}
 	}
-	
-	/**
-	 *  Cette méthode gère la reproduction de l'animal.
-	 */
-	@Override
 	public abstract void seReproduire();
 }

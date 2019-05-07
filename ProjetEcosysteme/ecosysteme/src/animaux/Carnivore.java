@@ -1,8 +1,8 @@
 package animaux;
 import java.awt.Color;
 /**
- * Cette classe définit les carnivores hérités de la classe animal.
- * @author Paul,Armand et Louise
+ * 
+ * @author formation
  *
  */
 import java.util.ArrayList;
@@ -13,27 +13,36 @@ import ecosysteme.Grille;
 public abstract class Carnivore extends Animal{
 	/**
 	 * Constructeur
-	 * @param dateNaissance : int : numéro du tour où l'animal est né
-	 * @param emplacement : objet de type Case sur laquelle se trouve l'animal
-	 * @param tpDecomposition : int temps que l'animal met à disparaitre après sa mort. Laisse du temps aux charognards pour manger le cadavre
-	 * @param remplissageEstomac : int : définit l'appétit de l'animal. plus ce nombre est faible plus l'animal aura besoin de nourriture ce nombre décroit chaque tour
-	 * @param maturite : définit l'age auquel l'animal est assez grand pour se reproduire
-	 * @param aProcree : si l'animal a procréé récemment 
-	 * @param meurtFaim : Indique le nombre de tours restants lorsque l'animal est en état de famine
+	 * @param id
+	 * @param dateNaissance
+	 * @param dateDeces
+	 * @param accesForet
+	 * @param esperanceVie
+	 * @param vitesse
+	 * @param vivant
+	 * @param tpDecomposition
+	 * @param espece
+	 * @param tailleEstomac
+	 * @param remplissageEstomac
+	 * @param viande
+	 * @param maturite
+	 * @param aProcree
+	 * @param meurtFaim
 	 */
 	public Carnivore(int dateNaissance, Case emplacement, 
-			int tpDecomposition, int remplissageEstomac,  int maturite,
+			int tpDecomposition, Color couleur, int remplissageEstomac,  int maturite,
 			boolean aProcree,int meurtFaim) {
-		super(dateNaissance,emplacement, tpDecomposition,
+		super(dateNaissance,emplacement, tpDecomposition,couleur,
 				remplissageEstomac, maturite,aProcree,meurtFaim);
 	}
-	
-	/**
-	 * Cette méthode définit les cases adjacentes à l'emplacement de l'animal
-	 * @return liste des cases adjacentes
-	 */
-	public ArrayList<Case> adjacentes(){
+
+	public void seNourrir(){
+		if (getEstVivant() == false) {
+		} else {
+			if (this.getRemplissageEstomac() < this.getTailleEstomac()) {
+				//		Création de la liste des cases adjacentes
 				ArrayList<Case> cases = new ArrayList<Case>();
+				//			Définition des cases adjacentes
 				Case case1 = Grille.getCase(this.getEmplacement().getX()-1,this.getEmplacement().getY()-1);	// marche avec les coordonn�es de la case
 				cases.add(case1);
 				Case case2 = Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()-1);
@@ -50,19 +59,6 @@ public abstract class Carnivore extends Animal{
 				cases.add(case7);
 				Case case8 = Grille.getCase(this.getEmplacement().getX()+1,this.getEmplacement().getY()+1);
 				cases.add(case8);
-				return(cases);
-	}
-	
-	/**
-	 * Cette méthode remplit l'estomac de l'animal s'il n'est pas déjà plein. 
-	 * La case sur laquelle il est diminue également en quantité de nourriture.
-	 */
-	@Override
-	public void seNourrir(){
-		if (getEstVivant() == false) {
-		} else {
-			if (this.getRemplissageEstomac() < this.getTailleEstomac()) {
-				ArrayList<Case> cases=this.adjacentes();
 				for (Case c : cases) {
 					// si la case contient un animal, et que l'animal n'est pas un autre carnivore, 
 					// le carnivore le tue
@@ -93,10 +89,5 @@ public abstract class Carnivore extends Animal{
 			}
 		}
 	}
-	
-	/**
-	 *  Cette méthode gère la reproduction de l'animal.
-	 */
-	@Override
 	public abstract void seReproduire();
 }

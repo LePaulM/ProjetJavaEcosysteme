@@ -2,11 +2,6 @@ package ecosysteme;
 
 import Gestion.Gestionnaire;
 
-/**
- * Cette classe gère les cases représentant les buissons
- * @author Paul,Armand et Louise
- *
- */
 public class Buisson extends Case{
 
 	/**
@@ -16,36 +11,23 @@ public class Buisson extends Case{
 
 	/**
 	 * Constructeur
-	 * @param position
 	 */
 	public Buisson(int[] position) {
 		super(1, true, false, position);
 		this.nourriture=10;
 	}
 	
-	/**
-	 * Constructeur
-	 * @param typeOccupation
-	 * @param estvide
-	 * @param cadavre
-	 * @param position
-	 */
 	public Buisson(int typeOccupation, boolean estvide, boolean cadavre, int[] position) {
 		super(typeOccupation, estvide, cadavre, position);
 		this.nourriture=10;
 	}
 
 	/**
-	 * Getters
+	 * Getter
 	 * @return
 	 */
 	public int getNourriture() {
 		return nourriture;
-	}
-	
-
-	public int getTypeOccupation() {
-		return 1;
 	}
 
 	/**
@@ -77,5 +59,8 @@ public class Buisson extends Case{
 		}
 	}
 	
+	public int getTypeOccupation() {
+		return 1;
+	}
 	
 }
