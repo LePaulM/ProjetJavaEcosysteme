@@ -4,7 +4,7 @@ public class ZDialogInfo {
 	  private String nom, tplateau,ecostme, nbreAnimaux,tps;
 
 	  public ZDialogInfo(){}
-	  public ZDialogInfo(String nom, String tplateau, String ecostme,  String nbreAnimaux,String tps){
+	  public ZDialogInfo(String nom, String tplateau, String ecostme, String nbreAnimaux, String tps){
 	    this.nom = nom;
 	    this.tplateau = tplateau;
 	    this.ecostme = ecostme;

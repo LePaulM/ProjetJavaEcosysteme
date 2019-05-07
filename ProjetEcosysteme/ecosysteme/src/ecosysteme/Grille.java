@@ -20,12 +20,16 @@ public abstract class Grille {
 
 
 	/**
-	 * Les getter
+	 * Les getter et setter
 	 * @return taille, grille
 	 */
 
 	public int getTaille() {
 		return taille;
+	}
+	
+	public void setTaille(int taille) {
+		this.taille = taille;
 	}
 /* ancienne version
 	public int[][] getGrille() {
@@ -35,6 +39,8 @@ public abstract class Grille {
 	public ArrayList<ArrayList<Case>> getGrille() {
 		return grille;
 	}
+	
+	
 	/**
 	 * Une methode (ou getter ??) qui recupere le contenu de la grille a une position (x,y)
 	 * Cette m�thode doit r�cup�rer la case pr�sente � la position (x, y normalement - Paul
@@ -53,14 +59,14 @@ public abstract class Grille {
 	 */
 	//nouvelle version
 	public Grille(int taille) {
-		this.taille=taille;
-		this.grille=new ArrayList<ArrayList<Case>>();
-		for(int i=0;i<this.taille;i++) {
-			ArrayList<Case> colonne= new ArrayList<Case>();
-			for ( int j=0;j<this.taille;j++) {
+		this.taille = taille;
+		this.grille = new ArrayList<ArrayList<Case>>();
+		for(int i = 0; i<this.taille; i++) {
+			ArrayList<Case> colonne = new ArrayList<Case>();
+			for ( int j = 0; j<this.taille; j++) {
 				int[] coord = new int[2];
-				coord[0]=i;
-				coord[1]=j;
+				coord[0] = i;
+				coord[1] = j;
 				Herbe herbe = new Herbe(coord);
 				colonne.add(herbe);
 			}

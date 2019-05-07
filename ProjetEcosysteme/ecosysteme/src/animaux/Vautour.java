@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;
 
+import AffichageGraphique.ZDialog;
 import Gestion.Gestionnaire;
 import ecosysteme.Case;
 import ecosysteme.Grille;
@@ -63,7 +64,8 @@ public class Vautour extends Charognard{
 		} else {
 			if (this.getAProcree() == true) {				// on vérifie que l'animal est mature et ne s'est pas reproduit récemment
 			} else {
-
+				if (Gestionnaire.getAnimaux().size() == ZDialog.getAnimauxTot()) {		// on vérifie qu'il n'y a pas trop d'animaux sur le plateau
+				} else {
 				// il faut mettre la reproduction dans les classes des animaux 
 				// car Animal est une classe abstraite (on ne peut pas instancier un objet d'une classe abstraite
 				// Création de la liste des cases adjacentes
@@ -93,7 +95,7 @@ public class Vautour extends Charognard{
 							if (c.getAnimal().getAProcree() == false) {						// et enfin si l'autre animal n'a pas déjà procréé récemment 
 								this.setAProcree(true);											// 			la variable permettant de savoir si l'animal a procree devient true
 								for (Case cbis : cases){											// 			on cherche ensuite  
-									if (c.getEstVide() == true) {									//			une case vide 
+									if (cbis.getEstVide() == true) {									//			une case vide 
 										Animal vautour = new Vautour (Gestionnaire.getTour(),cbis,
 												this.getTempsDecomposition(),  this.couleur, this.tailleEstomac/2,  this.getMaturite(),	// pour créer un nouvel individu
 												this.getAProcree(),this.getMeurtFaim());
@@ -106,6 +108,7 @@ public class Vautour extends Charognard{
 				}
 			}
 		}
+	}
 	}
 
 

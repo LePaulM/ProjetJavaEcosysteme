@@ -31,9 +31,14 @@ public class ZDialog extends JDialog{
 	private JLabel nomLabel, tplateauLabel, ecostmeLabel, tpsLabel,tpsLabel2, nbreAnimauxLabel, nbreAnimauxLabel2, icon;
 	private JRadioButton tranche1, tranche2, tranche3, tranche4;
 	private JComboBox tplateau, ecostme;
-	private JTextField nom, nbreAnimaux,tps;
+	private JTextField nom;
+	private static JTextField nbreAnimaux;
+	private JTextField tps;
 	private String environnementChoisi;
-	boolean okclique=false;
+	boolean okclique = false;
+	private int tPlateauInt, nbrTotAnimaux;
+	private static String nbrAnimauxString;
+
 
 	public JComboBox getEcostme() {
 		return ecostme;
@@ -61,6 +66,32 @@ public class ZDialog extends JDialog{
 		perso.setVisible(true);          
 	}
 
+	public static String getNbreAnimaux(){
+		nbrAnimauxString = nbreAnimaux.getText();
+		return (nbrAnimauxString.equals("")) ? "180" : nbrAnimauxString;
+	};
+
+	public String getTps(){
+		return (tps.getText().equals("")) ? "180" : tps.getText();
+	};
+
+	public int getTaille() {
+		String tPlateauChoisi = (String) tplateau.getSelectedItem();
+		if (tPlateauChoisi.equals("200*200")) {
+			tPlateauInt = 200;
+			return tPlateauInt;
+		} else if (tPlateauChoisi.equals("100*100")) {
+			tPlateauInt = 100;
+			return tPlateauInt;
+		} else {
+			tPlateauInt = 60;
+			return tPlateauInt;
+		}
+	}
+
+	public static int getAnimauxTot() {
+		return Integer.parseInt(getNbreAnimaux());
+	}
 
 	private void initComponent(){
 		//Icône
@@ -154,50 +185,33 @@ public class ZDialog extends JDialog{
 			public void actionPerformed(ActionEvent arg0) {
 				okclique = true;
 				environnementChoisi = (String) ecostme.getSelectedItem();
-				if (environnementChoisi.equals("Personnalisé")){
-					showPersonnalise();
-					setVisible(false);
-
-				} else {
-					zInfo = new ZDialogInfo(nom.getText(), (String)tplateau.getSelectedItem(),(String)ecostme.getSelectedItem(), getNbreAnimaux(),getTps());
-					showZDialogI();
-					JOptionPane jop = new JOptionPane();
-					jop.showMessageDialog(null, zInfo.toString(), "Options choisies", JOptionPane.INFORMATION_MESSAGE);
-					setVisible(false); 
-					if (environnementChoisi.equals("Montagnes")){
-						MassifMontagneux massif = new MassifMontagneux(70);
-						massif.creationGrille();
-					}
-					if (environnementChoisi.equals("Savane")){
-						Savane sav=new Savane(60);
-						sav.creationGrille();
-					}
-					if (environnementChoisi.equals("Savane")){
-						Syberie sib = new Syberie(30);
-						sib.creationGrille();
-					}
-					if (environnementChoisi.equals("Savane")){
-						Jungle jun = new Jungle(60);
-						jun.creationGrille();
-					}
-					if (environnementChoisi.equals("Savane")){
-						Steppe steppe = new Steppe (60);
-						steppe.creationGrille();
-					}
+				zInfo = new ZDialogInfo(nom.getText(), (String)tplateau.getSelectedItem(),(String)ecostme.getSelectedItem(), getNbreAnimaux(),getTps());
+				showZDialogI();
+				JOptionPane jop = new JOptionPane();
+				jop.showMessageDialog(null, zInfo.toString(), "Options choisies", JOptionPane.INFORMATION_MESSAGE);
+				setVisible(false); 
+				if (environnementChoisi.equals("Montagnes")){
+					MassifMontagneux massif = new MassifMontagneux(getTaille());
+					massif.creationGrille();
+				}
+				if (environnementChoisi.equals("Savane")){
+					Savane sav=new Savane(getTaille());
+					sav.creationGrille();
+				}
+				if (environnementChoisi.equals("Sybérie")){
+					Syberie sib = new Syberie(getTaille());
+					sib.creationGrille();
+				}
+				if (environnementChoisi.equals("Jungle")){
+					Jungle jun = new Jungle(getTaille());
+					jun.creationGrille();
+				}
+				if (environnementChoisi.equals("Steppes")){
+					Steppe steppe = new Steppe (getTaille());
+					steppe.creationGrille();
 				}
 			}
-
-
-			public String getNbreAnimaux(){
-				return (nbreAnimaux.getText().equals("")) ? "180" : nbreAnimaux.getText();
-			};
-
-			public String getTps(){
-				return (tps.getText().equals("")) ? "180" : tps.getText();
-			}
 		});
-
-
 
 		JButton cancelBouton = new JButton("Annuler");
 		cancelBouton.addActionListener(new ActionListener(){
