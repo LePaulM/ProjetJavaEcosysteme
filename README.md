@@ -3,10 +3,10 @@
 Cette application permet de simuler différents écosystèmes selon des choix définis par l'utilisateur.
 
 ## <a name="sommaire"></a>Sommaire 
-* Développé par
-* Installation
-* Exemples
-* Mises à jour à prévoir
+* [Développé par](#developpe-par)
+* [Installation](#installation)
+* [Exemples](#exemples)
+* [Mises à jour à prévoir](#maj)
 
 ## <a name="developpe-par"></a>Développé par 
 * "Paul MIANCIEN" <Paul.Miancien@ensg.eu>
