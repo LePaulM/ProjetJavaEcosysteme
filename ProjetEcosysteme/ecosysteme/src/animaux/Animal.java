@@ -55,7 +55,7 @@ public abstract class Animal {
 	//ca ne sert à rien de faire des tests sur des animaux morts - Paul
 
 	public Animal(int dateNaissance,  Case emplacement,
-			int tpDecomposition,  Color couleur, int remplissageEstomac,  int maturite,
+			int tpDecomposition,  int remplissageEstomac,  int maturite,
 			boolean aProcree,int meurtFaim) {
 
 		this.id = Gestionnaire.getAnimaux().size() + 1;
@@ -63,7 +63,6 @@ public abstract class Animal {
 		this.emplacement = emplacement;
 		this.estVivant = true;
 		this.tpDecomposition = tpDecomposition;
-		this.couleur = couleur;
 		this.remplissageEstomac = tailleEstomac/2 % 1;
 		this.maturite = maturite;
 		this.aProcree = aProcree;

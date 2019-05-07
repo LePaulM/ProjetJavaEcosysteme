@@ -19,25 +19,19 @@ import ecosysteme.Grille;
 public class Cheval extends Herbivore{
 	/**
 	 * Constructeur
-	 * @param dateNaissance
-	 * @param dateDeces
-	 * @param accesForet
-	 * @param esperanceVie
-	 * @param vitesse
-	 * @param estVivant
-	 * @param tpDecomposition
-	 * @param espece
-	 * @param tailleEstomac
-	 * @param remplissageEstomac
-	 * @param viande
-	 * @param maturite
-	 * @param aProcree
-	 * @param meurtFaim
+	 * @param dateNaissance : int numéro du tour où l'animal est né
+	 * @param emplacement : objet de type Case sur laquelle se trouve l'animal
+	 * @param tpDecomposition : int temps que l'animal met à disparaitre après sa mort. Laisse du temps aux charognards pour manger le cadavre
+	 * @param couleur : Color couleur de l'animal sur la carte
+	 * @param remplissageEstomac : int définit l'appétit de l'animal. plus ce nombre est faible plus l'animal aura besoin de nourriture ce nombre décroit chaque tour
+	 * @param maturite : définit l'age auquel l'animal est assez grand pour se reproduire
+	 * @param aProcree : si l'animal a procréé récemment
+	 * @param meurtFaim : Indique le nombre de tours restants lorsque l'animal est en état de famine
 	 */
 	public Cheval(int dateNaissance,  Case emplacement,
 			int tpDecomposition,  Color couleur, int remplissageEstomac, int maturite,
 			boolean aProcree,int meurtFaim) {
-		super(dateNaissance, emplacement, tpDecomposition,couleur,
+		super(dateNaissance, emplacement, tpDecomposition,
 				remplissageEstomac,maturite,aProcree,meurtFaim);
 
 		// on donne un id à l'animal
@@ -47,11 +41,14 @@ public class Cheval extends Herbivore{
 		esperanceVie = 25;
 		esperanceVie = esperanceVie +(int)(Math.random() * this.esperanceVie/5);
 
-		// le chacal a acces à la forêt
+		// le cheval a acces à la forêt
 		accesForet = false;
 
-		//	le chacal a une vitesse de 2
+		//	le cheval a une vitesse de 2
 		vitesse = 6;
+		
+		// le cheval est blanc
+		couleur= Color.white;
 	}
 
 	/**

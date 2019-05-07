@@ -2,7 +2,6 @@ package animaux;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Random;
 
 import AffichageGraphique.ZDialog;
 import Gestion.Gestionnaire;
@@ -18,26 +17,18 @@ import ecosysteme.Grille;
 public class Loup extends Carnivore{
 	/**
 	 * Constructeur
-	 * @param id
-	 * @param dateNaissance
-	 * @param dateDeces
-	 * @param accesForet
-	 * @param esperanceVie
-	 * @param vitesse
-	 * @param vivant
-	 * @param tpDecomposition
-	 * @param espece
-	 * @param tailleEstomac
-	 * @param remplissageEstomac
-	 * @param viande
-	 * @param maturite
-	 * @param aProcree
-	 * @param meurtFaim
+	 * @param dateNaissance : int numéro du tour où l'animal est né
+	 * @param emplacement : objet de type Case sur laquelle se trouve l'animal
+	 * @param tpDecomposition : int temps que l'animal met à disparaitre après sa mort. Laisse du temps aux charognards pour manger le cadavre
+	 * @param couleur : Color couleur de l'animal sur la carte
+	 * @param remplissageEstomac : int définit l'appétit de l'animal. plus ce nombre est faible plus l'animal aura besoin de nourriture ce nombre décroit chaque tour
+	 * @param maturite : définit l'age auquel l'animal est assez grand pour se reproduire
+	 * @param aProcree : si l'animal a procréé récemment
+	 * @param meurtFaim : Indique le nombre de tours restants lorsque l'animal est en état de famine
 	 */
-	public Loup(int dateNaissance, Case emplacement, 
-			int tpDecomposition,  Color couleur, int remplissageEstomac,  int maturite,
-			boolean aProcree,int meurtFaim) {
-		super(dateNaissance, emplacement, tpDecomposition,couleur,
+	public Loup(int dateNaissance, Case emplacement,int tpDecomposition, Color couleur, int remplissageEstomac,  int maturite,
+				boolean aProcree,int meurtFaim) {
+		super(dateNaissance, emplacement, tpDecomposition,
 				remplissageEstomac,maturite,aProcree,meurtFaim);
 
 		// on donne un id à l'animal
@@ -53,8 +44,11 @@ public class Loup extends Carnivore{
 		// le loup a une vitesse de 4
 		vitesse = 3;
 
-		// la loup contient 1 viande à la naissance
+		// le loup contient 1 viande à la naissance
 		viande = 1;
+		
+		//le loup est gris
+		couleur=Color.gray;		
 	}
 
 	/**
@@ -113,6 +107,7 @@ public class Loup extends Carnivore{
 			}
 		}
 	}
+	
 	/**
 	 * définition de la taille de l'estomac et de la viande disponible sur l'animal en fonction de son âge et de 
 	 * son espèce.
