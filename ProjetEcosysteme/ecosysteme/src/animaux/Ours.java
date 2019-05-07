@@ -2,7 +2,6 @@ package animaux;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Random;
 
 import AffichageGraphique.ZDialog;
 import Gestion.Gestionnaire;
@@ -10,8 +9,8 @@ import ecosysteme.Case;
 import ecosysteme.Grille;
 
 /**
- * 
- * @author formation
+ * Cette classe définit les ours en rédéfinissant les méthodes de la classe mère carnivore.
+ * @author Paul,Armand et Louise
  *
  */
 
@@ -61,6 +60,7 @@ public class Ours extends Carnivore{
 	 * 	Cette méthode permet à 2 animaux de la même espèce de se reproduire s'ils sont sur des cases adjacentes et de produire ainsi 
 	 *  un nouvel animal de la même espèce.
 	 */
+	@Override
 	public void seReproduire() {
 		if (this.getEstVivant() == false) {					// on vérifie que l'animal est vivant (on ne se reproduit que vivant, c'est la règle...)
 		} else {
@@ -112,12 +112,14 @@ public class Ours extends Carnivore{
 			}
 		}
 	}
+	
+	/**
+	 * définition de la taille de l'estomac et de la viande disponible sur l'animal en fonction de son âge et de 
+	 * son espèce.
+	 * cette fonction est activée par le Gestionnaire en début de tour
+	 */
 	public void croissance() {
-		/*
-		 * définition de la taille de l'estomac et de la viande disponible sur l'animal en fonction de son âge et de 
-		 * son espèce.
-		 * cette fonction est activée par le Gestionnaire en début de tour
-		 */
+
 		if ((Gestionnaire.getTour() - this.getDateNaissance())<=(esperanceVie/4)) {
 			setViande(3);
 			setTailleEstomac(2);

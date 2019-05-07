@@ -1,8 +1,8 @@
 package animaux;
 import java.awt.Color;
 /**
- * 
- * @author formation
+ * Cette classe définit les carnivores hérités de la classe animal.
+ * @author Paul,Armand et Louise
  *
  */
 import java.util.ArrayList;
@@ -35,7 +35,11 @@ public abstract class Carnivore extends Animal{
 		super(dateNaissance,emplacement, tpDecomposition,couleur,
 				remplissageEstomac, maturite,aProcree,meurtFaim);
 	}
-
+	
+	/**
+	 * 
+	 */
+	@Override
 	public void seNourrir(){
 		if (getEstVivant() == false) {
 		} else {
@@ -89,5 +93,10 @@ public abstract class Carnivore extends Animal{
 			}
 		}
 	}
+	
+	/**
+	 *  Cette méthode gère la reproduction de l'animal.
+	 */
+	@Override
 	public abstract void seReproduire();
 }

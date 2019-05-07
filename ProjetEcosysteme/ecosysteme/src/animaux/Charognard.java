@@ -1,12 +1,10 @@
 package animaux;
 import java.awt.Color;
-import java.util.ArrayList;
 
 import ecosysteme.Case;
-import ecosysteme.Grille;
 /**
- * 
- * @author formation
+ * Cette classe définit les charognards hérités de la classe animal
+ * @author Paul,Armand et Louise
  *
  */
 
@@ -36,7 +34,11 @@ public abstract class Charognard extends Animal {
 				remplissageEstomac, maturite,aProcree,meurtFaim);
 	}
 
-
+	/**
+	 * Cette méthode remplit l'estomac de l'animal s'il n'est pas déjà plein. 
+	 * La case sur laquelle il est diminue également en quantité de nourriture.
+	 */
+	@Override
 	public void seNourrir(){
 		// si l'animal est vivant
 		if (getEstVivant() == true) {
@@ -68,5 +70,10 @@ public abstract class Charognard extends Animal {
 			}
 		}
 	}
+	
+	/**
+	 *  Cette méthode gère la reproduction de l'animal.
+	 */
+	@Override
 	public abstract void seReproduire();
 }

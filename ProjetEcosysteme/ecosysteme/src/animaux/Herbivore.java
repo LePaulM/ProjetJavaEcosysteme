@@ -1,14 +1,12 @@
 package animaux;
 
 import java.awt.Color;
-import java.util.ArrayList;
 
 import ecosysteme.Case;
 
-//import java.awt.Color;
 /**
- * 
- * @author formation
+ * Cette classe définit les carnivores hérités de la classe animal.
+ * @author Paul,Armand et Louise
  *
  */
 
@@ -39,6 +37,11 @@ public abstract class Herbivore extends Animal{
 				remplissageEstomac, maturite,aProcree,meurtFaim);
 	}
 
+	/**
+	 * Cette méthode remplit l'estomac de l'animal s'il n'est pas déjà plein. 
+	 * La case sur laquelle il est diminue également en quantité de nourriture.
+	 */
+	@Override
 	public void seNourrir(){
 		if (this.getRemplissageEstomac() < this.getTailleEstomac()) {
 			// si la case est de type "Herbe" (0), "Buisson" (1) ou Foret (3), l'herbivore peut manger
@@ -65,5 +68,9 @@ public abstract class Herbivore extends Animal{
 			}
 		}
 	}
+	/**
+	 *  Cette méthode gère la reproduction de l'animal.
+	 */
+	@Override
 	public abstract void seReproduire();
 }

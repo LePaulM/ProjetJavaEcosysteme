@@ -10,8 +10,8 @@ import ecosysteme.Case;
 import ecosysteme.Grille;
 
 /**
- * 
- * @author formation
+ * Cette classe définit les chevaux en rédéfinissant les méthodes de la classe mère herbivore.
+ * @author Paul,Armand et Louise
  *
  */
 
@@ -58,6 +58,7 @@ public class Cheval extends Herbivore{
 	 * 	Cette méthode permet à 2 animaux de la même espèce de se reproduire s'ils sont sur des cases adjacentes et de produire ainsi 
 	 *  un nouvel animal de la même espèce.
 	 */
+	@Override
 	public void seReproduire() {
 		if (this.getEstVivant() == false) {					// on vérifie que l'animal est vivant (on ne se reproduit que vivant, c'est la règle...)
 		} else {
@@ -109,13 +110,14 @@ public class Cheval extends Herbivore{
 			}
 		}
 	}
-
+	
+	/**
+	 * définition de la taille de l'estomac et de la viande disponible sur l'animal en fonction de son âge et de 
+	 * son espèce.
+	 * cette fonction est activée par le Gestionnaire en début de tour
+	 */
 	public void croissance() {
-		/*
-		 * définition de la taille de l'estomac et de la viande disponible sur l'animal en fonction de son âge et de 
-		 * son espèce.
-		 * cette fonction est activée par le Gestionnaire en début de tour
-		 */
+
 		if ((Gestionnaire.getTour()-getDateNaissance())<=(esperanceVie/4)) {
 			setViande(2);
 			setTailleEstomac(1);

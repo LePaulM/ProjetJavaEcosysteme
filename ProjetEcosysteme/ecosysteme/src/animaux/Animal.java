@@ -8,7 +8,13 @@ import Gestion.Gestionnaire;
 import ecosysteme.Case;
 import ecosysteme.Grille;
 
-
+/**
+ * Cette classe abstraite définit l'ensemble des attributs composant un animal ainsi 
+ * que les différentes méthodes lui permettant de se déplacer, se nourrir et de gérer sa vie
+ * et sa décomposition. 
+ * @author Paul,Armand et Louise
+ *
+ */
 
 public abstract class Animal {
 	int id;
@@ -29,7 +35,7 @@ public abstract class Animal {
 	private boolean aProcree;
 	private int meurtFaim;
 
-	/**
+
 	/**
 	 * Constructeur	
 	 * @param id : identifiant de l'individu, cet identifiant permet au gestionnaire de faire "jouer" les individus
@@ -46,7 +52,7 @@ public abstract class Animal {
 
 
 	// il faut changer famine() de place dans les diagrammes de sequence
-	//ca ne sert à rien de faire des tests sur des animaux mort - Paul
+	//ca ne sert à rien de faire des tests sur des animaux morts - Paul
 
 	public Animal(int dateNaissance,  Case emplacement,
 			int tpDecomposition,  Color couleur, int remplissageEstomac,  int maturite,
@@ -295,7 +301,9 @@ public abstract class Animal {
 			this.seDeplacer();
 		}
 	}				
-
+	/**
+	 * Cette méthode gère la reproduction de l'animal.
+	 */
 	public abstract void seReproduire();
 
 	/**
@@ -318,7 +326,7 @@ public abstract class Animal {
 
 
 	/**
-	 * cette méthode s'active lorsque l'animal décède
+	 * Cette méthode s'active lorsque l'animal décède
 	 * elle gère le décès de l'animal
 	 */
 	public void decede() {
@@ -332,7 +340,7 @@ public abstract class Animal {
 	/**
 	 * 	Une fois qu'un animal est décédé, il a un certain nombre de tours pour se décomposer, qui est réduit si un charognard le mange.
 	 * 	Cette méthode gère la décomposition et fait disparaitre l'animal de la case et donc de la grille.
-	 * Cette fonction est lancée dans le getionnaire à chaque début de tour
+	 *  Elle est lancée dans le getionnaire à chaque début de tour
 	 */
 	public void seDecomposer(){
 		if (this.getEmplacement().getCadavre() == true) {		// on vérifie que l'animal ne s'est pas encore décomposé
