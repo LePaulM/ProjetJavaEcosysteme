@@ -25,7 +25,7 @@ Voici quelques images de notre application []()
 
 ## <a name="maj"></a> Mises à jour à prévoir
 Dans l'avenir nous aimerions ajouter les élements suivants à notre application:
-*
-*
-*
+* Un menu "personnalisé" qui permettra à l'utilisateur de créer complétement son propre écosystème avec ses propres animaux
+* blabla
+* blabla
 
