@@ -1,13 +1,18 @@
 package ecosysteme;
+/** 
+ * Classe gérant l'écosystème de type massif montagneux.
+ * @author Paul,Armand et Louise
+ *
+ */
 
 public class MassifMontagneux extends Grille{
 	
 	/**
-	 * Le constructeur de la classe, reutilisant le constructeur de la classe mere
+	 * Le constructeur de la classe,  héritant du constructeur de la classe mere
 	 * @param taille
 	 */
 	public MassifMontagneux(int taille) {
-		super(taille);// appel au constructeur de sa classe mere : ''Grille''
+		super(taille);
 	}
 	
 	/**
@@ -70,7 +75,8 @@ public class MassifMontagneux extends Grille{
 	}
 	
 	/**
-	 * Une methode qui creer les rivieres qui partent de la montagne. Elles seront larges de trois cases sauf quand celles-ci sont sur une zone de montagne ou une zone de neige elles seront larges d'une case
+	 * Une methode qui crée les rivieres partant de la montagne. Elles seront larges de trois cases sauf quand celles qui sont sur une 
+	 * zone de montagne ou une zone de neige : elles seront alors larges d'une case.
 	 */
 	@Override
 	public void creationEau() {
@@ -155,16 +161,12 @@ public class MassifMontagneux extends Grille{
 	}
 	
 	/**
-	 * Quantitee de buissons et d'arbres dans l'ecosysteme MassifMontagneux ---> a mettre absolument dans une methode ??
-	 */
-	int arbre = (int)(Math.pow(getTaille(),2)*5/(21*100));
-	int buisson=(int)70*getTaille()/100;
-	
-	/**
 	 * Methode qui cree la grille avec ses composantes, l'ajout successif des sols suit un ordre bien precis
 	 */
 	@Override
 	public void creationGrille() {
+		int arbre = (int)(Math.pow(getTaille(),2)*5/(21*100));
+		int buisson=(int)70*getTaille()/100;
 		
 		MassifMontagneux massif = new MassifMontagneux(getTaille());
 		

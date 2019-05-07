@@ -1,5 +1,9 @@
 package ecosysteme;
-
+/**
+ * 
+ * @author formation
+ *
+ */
 public class Steppe extends Grille{
 
 	/**

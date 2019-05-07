@@ -1,5 +1,10 @@
 package ecosysteme;
 
+/**
+ * Classe gérant l'écosystème savane
+ * @author Paul, Armand et Louise
+ *
+ */
 public class Savane extends Grille{
 
 	/**
@@ -59,14 +64,18 @@ public class Savane extends Grille{
 			}
 			
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public void creationNeige() {
 		// TODO Auto-generated method stub
 		//		Methode vide car il n'y a pas de neige dans la savane
 	}
 
-
+	/**
+	 * 
+	 */
 	@Override
 	public void creationMontagne() {
 		// TODO Auto-generated method stub

@@ -5,7 +5,11 @@ import java.util.Arrays;
 import java.util.List;
 import javax.swing.JFrame;
 
-
+/**
+ * Classe gérant la grille de jeu
+ * @author Paul,Armand et Louise
+ *
+ */
 public abstract class Grille {
 
 	/**
@@ -20,7 +24,7 @@ public abstract class Grille {
 
 
 	/**
-	 * Les getter et setter
+	 * Les getters et setters
 	 * @return taille, grille
 	 */
 
@@ -31,19 +35,14 @@ public abstract class Grille {
 	public void setTaille(int taille) {
 		this.taille = taille;
 	}
-/* ancienne version
-	public int[][] getGrille() {
-		return grille;
-	}
-*/
+	
 	public ArrayList<ArrayList<Case>> getGrille() {
 		return grille;
 	}
 	
 	
 	/**
-	 * Une methode (ou getter ??) qui recupere le contenu de la grille a une position (x,y)
-	 * Cette m�thode doit r�cup�rer la case pr�sente � la position (x, y normalement - Paul
+	 * getter qui recupere le contenu de la grille a une position (x,y)
 	 * @param x
 	 * @param y
 	 * @return
@@ -88,7 +87,6 @@ public abstract class Grille {
 	 * Une methode qui cree les buissons, applicable a toutes les classes filles, c'est une g�n�ration dans l'espace al�atoirement d'une quantitee de buisson definie en parametre. Lors de la creation de la grille un buisson ne peut etre place ni sur un autre buisson, ni sur aucun autre sol excepte l'herbe et le sable.
 	 * @param buisson
 	 */
-	//nouvelle version
 	public void creationBuisson(int buisson) {
 		int i=0;
 		while(i<buisson) {
@@ -202,7 +200,7 @@ public abstract class Grille {
 		}
 	}
 	/**
-	 * methodes abstraite redefinie dans les classes filles
+	 * methodes abstraites redefinies dans les classes filles
 	 */
 	public abstract void creationNeige();
 	public abstract void creationEau();

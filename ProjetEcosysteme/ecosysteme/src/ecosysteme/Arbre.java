@@ -2,6 +2,11 @@ package ecosysteme;
 
 import Gestion.Gestionnaire;
 
+/**
+ * Cette classe gère les cases représentant les arbres
+ * @author Paul,Armand et Louise
+ *
+ */
 public class Arbre extends Case{
 	/**
 	 * stock de nourriture que contient la foret
@@ -10,13 +15,20 @@ public class Arbre extends Case{
 
 	/**
 	 * Constructeur
+	 * @param position : 
 	 */
 	public Arbre(int[] position) {
 		super(3, true, false, position);
 		this.nourriture=20;
 	}
 	
-	
+	/**
+	 * Constructeur 
+	 * @param typeOccupation
+	 * @param estvide
+	 * @param cadavre
+	 * @param position
+	 */
 	public Arbre(int typeOccupation, boolean estvide, boolean cadavre, int[] position) {
 		super(3, estvide, cadavre, position);
 		this.nourriture=20;
@@ -24,13 +36,17 @@ public class Arbre extends Case{
 
 
 	/**
-	 * Getter
+	 * Getters
 	 * @return
 	 */
 	public int getNourriture() {
 		return nourriture;
 	}
-
+	
+	@Override
+	public int getTypeOccupation() {
+		return 3;
+	}
 
 	/**
 	 * Setter
@@ -39,9 +55,6 @@ public class Arbre extends Case{
 	public void setNourriture(int nourriture) {
 		this.nourriture = nourriture;
 	}
-	
-
-
 
 	/**
 	 * méthode qui recharge le stock de nouriiture que contient le buisson si il est vide
@@ -62,10 +75,8 @@ public class Arbre extends Case{
 			}
 		}
 	}
+	
 
-	@Override
-	public int getTypeOccupation() {
-		return 3;
-	}
+
 	
 }

@@ -1,9 +1,14 @@
 package ecosysteme;
+/**
+ * Classe gérant l'ecosystème de type jungle
+ * @author formation
+ *
+ */
 
 public class Jungle extends Grille{
 
 	/**
-	 * Le constructeur de la classe, reutilisant le constructeur de la classe mere
+	 * Le constructeur de la classe, héritant du constructeur de la classe mere
 	 * @param taille
 	 */
 	public Jungle(int taille) {
@@ -11,13 +16,11 @@ public class Jungle extends Grille{
 	}
 
 	/**
-	 * methode qui creer un cours d'eau avec plusieurs ramifications, crees independemments sous forme de troncons
+	 * Méthode créant un cours d'eau avec plusieurs ramifications, crées independaments sous forme de troncons
 	 */
 	@Override
 	public void creationEau() {
-		/**
-		 * troncon 1
-		 */
+		 //troncon 1
 		for(int x=(int)getTaille()/7;x<=(int)3*getTaille()/7;x++) {
 			int y=(int)getTaille()/4;
 			int[] coord = new int[2];
@@ -28,9 +31,7 @@ public class Jungle extends Grille{
 			getGrille().get(x).set(y, eau);
 			getGrille().get(x).set(y+1, eau);
 		}
-		/**
-		 * troncon 2
-		 */
+		 // troncon 2
 		for(int x=(int)3*getTaille()/7-2;x<=(int)5*getTaille()/7;x++) {
 			int y=(int)getTaille()/4+3;
 			int[] coord = new int[2];
@@ -41,9 +42,8 @@ public class Jungle extends Grille{
 			getGrille().get(x).set(y, eau);
 			getGrille().get(x).set(y+1, eau);
 		}
-		/**
-		 * troncon 3
-		 */
+		 // troncon 3
+
 		for(int y=(int)getTaille()/4+5;y<=(int)2*getTaille()/4;y++) {
 			int x=(int)5*getTaille()/7-1;
 			int[] coord = new int[2];
@@ -54,9 +54,8 @@ public class Jungle extends Grille{
 			getGrille().get(x).set(y, eau);
 			getGrille().get(x+1).set(y, eau);
 		}
-		/**
-		 * troncon 4
-		 */
+		 // troncon 4
+		
 		for(int x=(int)5*getTaille()/7-2;x<(int)getTaille();x++) {
 			int y=(int)2*getTaille()/4+2;
 			int[] coord = new int[2];
@@ -67,9 +66,7 @@ public class Jungle extends Grille{
 			getGrille().get(x).set(y, eau);
 			getGrille().get(x).set(y+1, eau);
 		}
-		/**
-		 * troncon 5
-		 */
+		// troncon 5
 		for(int y=(int)getTaille()/4+3;y<=(int)3*getTaille()/4;y++) {
 			int x=(int)getTaille()/2;
 			int[] coord = new int[2];
@@ -81,17 +78,14 @@ public class Jungle extends Grille{
 			getGrille().get(x+1).set(y, eau);
 		}
 	}
-
-
-
-	/**
-	 * Quantitee de buissons et d'arbres dans l'ecosysteme Jungle ---> a mettre absolument dans une methode ??
-	 */
-	int arbre = (int)Math.pow(getTaille(),2)*80/(21*100);
-	int buisson = (int)getTaille()*50/100;
-
+	
+/**
+ * Méthode lançant la création de la grille
+ */
 	@Override
 	public void creationGrille() {
+		int arbre = (int)Math.pow(getTaille(),2)*80/(21*100);
+		int buisson = (int)getTaille()*50/100;
 		Jungle  jungle = new Jungle(getTaille());
 
 		jungle.creationArbre(arbre);
@@ -99,6 +93,7 @@ public class Jungle extends Grille{
 		jungle.creationEau();
 		jungle.afficher();
 	}
+	
 
 	@Override
 	public void creationNeige() {

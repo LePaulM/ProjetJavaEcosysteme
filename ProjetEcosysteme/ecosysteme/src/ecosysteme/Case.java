@@ -2,16 +2,26 @@ package ecosysteme;
 
 import Gestion.Gestionnaire;
 import animaux.Animal;
-
+/**
+ * Classe gérant les cases 
+ * @author Paul,Armand et Louise
+ *
+ */
 public abstract class Case {
 	
-	private /*abstract*/ int typeOccupation;//pk quand jmets abstract il gueule
+	private int typeOccupation;
 	private boolean estVide;
 	private boolean cadavre;
 	private int position[];
 	
 	
-	
+	/**
+	 * Constructeur
+	 * @param typeOccupation
+	 * @param estvide
+	 * @param cadavre
+	 * @param position
+	 */
 	public Case(int typeOccupation, boolean estvide, boolean cadavre, int[] position) {
 		super();
 		this.typeOccupation = typeOccupation;
@@ -19,6 +29,10 @@ public abstract class Case {
 		this.cadavre = cadavre;
 		this.position = position;
 	}
+	/**
+	 * getters et setters
+	 * @return
+	 */
 	/*
 	public int getTypeOccupation() {
 		return typeOccupation;
@@ -71,8 +85,14 @@ public abstract class Case {
 		}
 		return animalRetour;
 	}
-
-	public abstract int getTypeOccupation();// mettre les return ''sable, ou 0 etc'' dans les classes filles
 	
+	public int[] getCoordonnees(int x,int y) {
+		int[] coord = new int[2];
+		coord[0]=x;
+		coord[1]=y;
+		return coord;
+	}
+
+	public abstract int getTypeOccupation();
 	
 }

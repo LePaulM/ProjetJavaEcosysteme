@@ -1,14 +1,9 @@
 package ecosysteme;
 
-import java.awt.Color;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import src.Visualisation.Grille;
 import java.util.HashMap;
-import src.Visualisation.ImageIcon;
-import src.Visualisation.String;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 public class Affiche extends JFrame{
 	ImageIcon X,O;

@@ -52,8 +52,8 @@ public class Main {
 
 		// c'est ca que tu peut ''activer'' pour afficher les grilles, n'en affiche en qu'une a la fois /!\,
 
-		MassifMontagneux massif = new MassifMontagneux(70);
-		massif.creationGrille();
+		//MassifMontagneux massif = new MassifMontagneux(70);
+		//massif.creationGrille();
 
 		//Savane sav=new Savane(60);
 		//sav.creationGrille();
@@ -66,12 +66,8 @@ public class Main {
 
 		//Steppe steppe = new Steppe (60);
 		//steppe.creationGrille();
-		/*
-		int[] tab = new int[2];
-		tab[0]=500;
-		tab[1]=200;
-		Herbe herbe = new Herbe(tab);
-		System.out.println(herbe.getEstVide());
-		 */
+		
+		
+		 
 	}
 }
