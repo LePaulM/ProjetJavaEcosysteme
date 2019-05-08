@@ -16,29 +16,27 @@ public class MassifMontagneux extends Grille{
 	}
 	
 	/**
-	 * Une methode qui cree la zone montagneuse de notre grille, l'explication de cette methode sera detaillee sur le rapport
+	 * Une methode qui cree la zone montagneuse de notre grille, cette zone sera composee de quatres blocs de montagnes circulaire, ils vont etre créés indépendament les uns les autres.
+	 * Si vous voulez comprendre le déroulé de cette méthode, vous trouverez l'explication plutot sur le rapport
 	 */
 	@Override
 	public void creationMontagne() {
 		// premier bloc
-		double premiere=2*getTaille()/3; //premiere sequence, grand axe
-		for(int x=0;x<=premiere;x++) {
-			double a=(x*x);
-			double b=(Math.pow(premiere,2));
-			for(int y=0;y<=(int)(getTaille()/4)*Math.sqrt(1-(a/b));y++) { 
-				int[] coord = new int[2];
-				coord[0]=x;
-				coord[1]=y;
-				Montagne montagne = new Montagne(coord);
-				getGrille().get(x).set(y, montagne);
+		double a=2*getTaille()/3; //le grand axe
+		double b=getTaille()/4; //le petit axe, qui sera le meme pour les quatres blocs de montagne
+		for(int x=0;x<=a;x++) { //quand on fait varier x de 0 à la taille désirée...
+			for(int y=0;y<=(int)b*Math.sqrt(1-((x*x)/(a*a)));y++) { //...on fait varier y en fonction x
+				int[] coord = new int[2]; //on créer un jeux de coordonnées
+				coord[0]=x; //où l'on ajoute le x actuel
+				coord[1]=y; //et le y actuel
+				Montagne montagne = new Montagne(coord); //ensuite on créer une case de type montagne
+				getGrille().get(x).set(y, montagne); // dans la grille, on modifie la case de coordonnées (x,y) par la case montagne
 			}
 			}
 		// deuxieme bloc
-		for(int x=0;x<=3*getTaille()/4;x++) {
-			double a=(x*x);
-			double b=(Math.pow(3*getTaille()/4,2));
-			for(int y=(int)(-(getTaille()/4)*Math.sqrt(1-(a/b))+2*(getTaille()/4)); y<=(getTaille()/2);y++) {
-				
+		a=3*getTaille()/4; //on met a jour le grand axe qui sera different pour les DEUX blocs suivants
+		for(int x=0;x<=a;x++) { //quand on fait varier x de 0 à la taille désirée...
+			for(int y=(int)(-b*Math.sqrt(1-((x*x)/(a*a)))+2*(getTaille()/4)); y<=(getTaille()/2);y++) { //...on fait varier y en fonction de x en rajoutant un décalage d'un quart de la grille
 				int[] coord = new int[2];
 				coord[0]=x;
 				coord[1]=y;
@@ -47,11 +45,8 @@ public class MassifMontagneux extends Grille{
 			}
 			}
 		// troisieme bloc
-		for(int x=0;x<=3*getTaille()/4;x++) {
-			double a=(x*x);
-			double b=(Math.pow(3*getTaille()/4,2));
-			for(int y=getTaille()/2;y<=(int)(getTaille()/4)*Math.sqrt(1-(a/b))+getTaille()/2;y++) {
-				
+		for(int x=0;x<=a;x++) { //quand on fait varier x de 0 à la taille désirée...
+			for(int y=getTaille()/2;y<=(int)b*Math.sqrt(1-((x*x)/(a*a)))+getTaille()/2;y++) { //...on fait varier y en fonction de x en rajoutant un décalage d'un demi de la grille
 				int[] coord = new int[2];
 				coord[0]=x;
 				coord[1]=y;
@@ -60,11 +55,9 @@ public class MassifMontagneux extends Grille{
 			}
 			}
 		// quatrieme bloc
-		for(int x=0;x<=4*getTaille()/5;x++) {
-			double a=(x*x);
-			double b=(Math.pow(4*getTaille()/5,2));
-			for(int y=(int)((getTaille()/4)-(getTaille()/4)*Math.sqrt(1-(a/b))+3*getTaille()/4); y<getTaille();y++) {
-				
+		a=4*getTaille()/5;  //on met a jour le grand axe qui sera different pour ce bloc
+		for(int x=0;x<=a;x++) {  //quand on fait varier x de 0 à la taille désirée...
+			for(int y=(int)((getTaille()/4)-b*Math.sqrt(1-((x*x)/(a*a)))+3*getTaille()/4); y<getTaille();y++) {//...on fait varier y en fonction de x en rajoutant un décalage de 3/4 de la grille
 				int[] coord = new int[2];
 				coord[0]=x;
 				coord[1]=y;
@@ -173,7 +166,7 @@ public class MassifMontagneux extends Grille{
 		massif.creationMontagne();	
 		massif.creationNeige();
 		massif.creationArbre(arbre);
-		massif.creationBuisson(buisson);
+		//massif.creationBuisson(buisson);
 		massif.creationEau();
 		massif.afficher();
 	}

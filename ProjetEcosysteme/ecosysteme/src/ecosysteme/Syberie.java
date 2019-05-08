@@ -16,21 +16,16 @@ public class Syberie extends Grille{
 	}
 
 	/**
-	 * Methode qui cree une repartition aleatoire de neige dans la grille, la neige va remplir 70% de la grille. Seule regle : lors de la generation de case neige, la neige ne peut pas aller sur de la neige deja presente
+	 * Methode qui cree une repartition aleatoire de neige dans la grille, la neige va remplir 70% de la grille. Seule regle : lors de la 
+	 * generation de case neige, la neige ne peut pas aller sur de la neige deja presente.
 	 */
 	@Override
 	public void creationNeige() {
-		int neige=(int)(Math.pow(getTaille(), 2)*70/100);
-		int i=0;
+		int neige=(int)(Math.pow(getTaille(), 2)*70/100), i=0;
 		while(i<neige) {
-			double a=Math.random()*getTaille();
-			double b=Math.random()*getTaille();
-			int x=(int)a;
-			int y=(int)b;
-			if(getGrille().get(x).get(y).getTypeOccupation()==5) {
-				continue;
-			}
-			if (getGrille().get(x).get(y).getTypeOccupation()==2) {
+			double a=Math.random()*getTaille(),b=Math.random()*getTaille();
+			int x=(int)a,y=(int)b;
+			if(getGrille().get(x).get(y).getTypeOccupation()==5||getGrille().get(x).get(y).getTypeOccupation()==2) {
 				continue;
 			}
 			int[] coord = new int[2];
@@ -38,7 +33,6 @@ public class Syberie extends Grille{
 			coord[1]=y;
 			Neige neige1 = new Neige(coord);
 			getGrille().get(x).set(y, neige1);
-
 			i=i+1;
 		}
 	}
@@ -48,8 +42,7 @@ public class Syberie extends Grille{
 	 */
 	@Override
 	public void creationMontagne() {
-		double a = getTaille()*0.2;//axe des x
-		double b = getTaille()*0.8;//axe des y
+		double a = getTaille()*0.2,b = getTaille()*0.8;//axe des x et des y
 		for(int x=0;x<=(int)(a);x++) {
 			for(int y=0;y<=(int)(b*Math.sqrt(1-((x*x)/(a*a))));y++){
 				int[] coord = new int[2];
@@ -63,7 +56,7 @@ public class Syberie extends Grille{
 	
 	
 	/**
-	 * methode qui creer un cours d'eau avec plusieurs ramifications, crees independemments sous forme de troncons
+	 * methode qui crée un cours d'eau avec plusieurs ramifications, crées independemments sous forme de troncons
 	 */
 	@Override
 	public void creationEau() {
@@ -132,7 +125,6 @@ public class Syberie extends Grille{
 	public void creationGrille() {
 		int arbre = (int)Math.pow(getTaille(),2)*70/(21*100);
 		Syberie syberie = new Syberie(getTaille());
-		
 		syberie.creationMontagne();	
 		syberie.creationArbre(arbre);
 		syberie.creationNeige();

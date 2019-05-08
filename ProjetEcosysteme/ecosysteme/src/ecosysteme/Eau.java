@@ -7,17 +7,17 @@ package ecosysteme;
 public class Eau extends Case{
 	/**
 	 * Constructeur
-	 * @param position
+	 * @param position : position de la case
 	 */
 	public Eau(int[] position) {
 		super(2, true, false, position);
 	}
 	/**
 	 * Constrcuteur
-	 * @param typeOccupation
-	 * @param estvide
-	 * @param cadavre
-	 * @param position
+	 * @param typeOccupation : occupation de la case (ici eau)
+	 * @param estvide : contient-elle un animal ? 
+	 * @param cadavre : contient-elle un cadavre
+	 * @param position : position de la case
 	 */
 	public Eau(int typeOccupation, boolean estvide, boolean cadavre, int[] position) {
 		super(2, estvide, cadavre, position);

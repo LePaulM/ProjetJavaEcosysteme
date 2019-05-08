@@ -57,8 +57,8 @@ public class Main {
 
 		// c'est ca que tu peut ''activer'' pour afficher les grilles, n'en affiche en qu'une a la fois /!\,
 
-		//MassifMontagneux massif = new MassifMontagneux(70);
-		//massif.creationGrille();
+		MassifMontagneux massif = new MassifMontagneux(50);
+		massif.creationGrille();
 
 		//Savane sav=new Savane(60);
 		//sav.creationGrille();

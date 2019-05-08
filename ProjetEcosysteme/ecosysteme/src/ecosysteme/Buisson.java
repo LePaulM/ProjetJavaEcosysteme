@@ -16,7 +16,7 @@ public class Buisson extends Case{
 
 	/**
 	 * Constructeur
-	 * @param position
+	 * @param position : position de la case
 	 */
 	public Buisson(int[] position) {
 		super(1, true, false, position);
@@ -25,10 +25,10 @@ public class Buisson extends Case{
 	
 	/**
 	 * Constructeur
-	 * @param typeOccupation
-	 * @param estvide
-	 * @param cadavre
-	 * @param position
+	 * @param typeOccupation : type d'occupation (ici buisson)
+	 * @param estvide : contient-elle un animal ? 
+	 * @param cadavre : contient-elle un cadavre ? 
+	 * @param position : position de la case
 	 */
 	public Buisson(int typeOccupation, boolean estvide, boolean cadavre, int[] position) {
 		super(typeOccupation, estvide, cadavre, position);
@@ -73,7 +73,7 @@ public class Buisson extends Case{
 	}
 	
 	/**
-	 * 
+	 * getter
 	 */
 	public int getTypeOccupation() {
 		return 1;
