@@ -21,7 +21,7 @@ public class Gestionnaire {
 	private static ArrayList<Animal> animaux = new ArrayList<Animal>();
 	
 	/**
-	 * getter et setter
+	 * getters et setters
 	 * 
 	 */
 
@@ -99,7 +99,7 @@ public class Gestionnaire {
 						if (e.getEsperanceVie() <= tour - e.getDateNaissance() || e.famine() == true ) {	//si l'animal a atteint son esperance de vie, ou si il est en famine avancée
 							e.decede();												// il décede
 							continue;												// et on termine le tour de l'animal
-						}else {														//sinon,
+						} else {														//sinon,
 							e.seDeplacer();											// l'animal se déplace,
 							e.seNourrir();											// se nourrit si il le peut
 							e.seReproduire();										// et se reproduit si il le peut
