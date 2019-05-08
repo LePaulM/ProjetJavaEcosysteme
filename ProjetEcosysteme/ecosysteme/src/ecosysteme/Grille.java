@@ -71,34 +71,45 @@ public abstract class Grille {
 			grille.add(colonne);
 		}
 	}
-
+	
 	/**
-	 * Une methode qui cree les buissons, applicable a toutes les classes filles, c'est une gï¿½nï¿½ration dans l'espace alï¿½atoirement 
-	 * d'une quantitee de buisson definie en parametres. Lors de la creation de la grille un buisson ne peut etre 
-	 * place ni sur un autre buisson, ni sur aucun autre sol excepte l'herbe et le sable.
-	 * @param buisson : nombre de buisson souhaité
+	 * Test si l'occupation du sol n'est pas de type herbe ou sable. Retourne true si c'est le cas.
 	 */
-	public void creationBuisson(int buisson) {
-		int i=0;
-		while(i<buisson) {
-			double a=Math.random()*this.taille;
-			double b=Math.random()*this.taille;
-			int x=(int)a;
-			int y=(int)b;
-			if(grille.get(x).get(y).getTypeOccupation()==1||
+	public boolean herbeOuSable() {
+		int x=(int)Math.random()*this.taille;
+		int y=(int)Math.random()*this.taille;
+		if(grille.get(x).get(y).getTypeOccupation()==1||
 			   grille.get(x).get(y).getTypeOccupation()==2||
 			   grille.get(x).get(y).getTypeOccupation()==3||
 			   grille.get(x).get(y).getTypeOccupation()==5||
 			   grille.get(x).get(y).getTypeOccupation()==7) {
+			   return true;
+			}
+		else {
+			return false;
+		}
+	}
+	
+	/**
+	 * Une methode qui cree les buissons, applicable a toutes les classes filles, c'est une gï¿½nï¿½ration dans l'espace alï¿½atoirement 
+	 * d'une quantitee de buisson definie en parametres. Lors de la creation de la grille un buisson ne peut etre 
+	 * place ni sur un autre buisson, ni sur aucun autre sol excepte l'herbe et le sable.
+	 * @param nbrebuisson : nombre de buisson souhaité
+	 */
+	public void creationBuisson(int nbrebuisson) {
+		int i=0;
+
+		int x=(int)Math.random()*this.taille;
+		int y=(int)Math.random()*this.taille;
+		while(i<nbrebuisson) {
+			if (herbeOuSable()) {
 				continue;
 			}
-	
 			int[] coord = new int[2];
 			coord[0]=x;
 			coord[1]=y;
-			Buisson buisson1 = new Buisson(coord);
-			grille.get(x).set(y,buisson1);
-			
+			Buisson buisson = new Buisson(coord);
+			grille.get(x).set(y,buisson);
 			i=i+1;
 		}
 	}
