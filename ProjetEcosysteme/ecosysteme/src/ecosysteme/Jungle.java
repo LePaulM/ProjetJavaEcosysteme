@@ -1,7 +1,7 @@
 package ecosysteme;
 /**
  * Classe gÃ©rant l'ecosystÃ¨me de type jungle
- * @author formation
+ * @author Paul,Armand et Louise
  *
  */
 
@@ -94,15 +94,22 @@ public class Jungle extends Grille{
 		jungle.afficher();
 	}
 	
-
+	/**
+	 * Méthode permettant la création de neige
+	 */
 	@Override
 	public void creationNeige() {
 		// TODO Auto-generated method stub
+		// Cette méthode est vide car il n'y a pas de neige dans la jungle.
 	}
 
+	/** 
+	 * Méthode permettant la création de montagnes
+	 */
 	@Override
 	public void creationMontagne() {
 		// TODO Auto-generated method stub
+		// Cette méthode est vide car il n'y a pas de montagnes dans la jungle
 		
 	}
 

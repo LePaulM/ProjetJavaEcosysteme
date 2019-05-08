@@ -5,11 +5,20 @@ import java.awt.GridLayout;
 import ecosysteme.Grille; 
 
 import javax.swing.JPanel;
-
+ /**
+  * Cette classe permet de gérer l'affichage de la grille
+  * @author Paul, Armand et Louise
+  *
+  */
 public class AffichageGrille extends JPanel {
 
 	private JPanel[] buttons;
 	
+	/**
+	 * Cette méthode définit les couleurs pour chaque type d'occupation et l'affiche 
+	 * de façon graphique.
+	 * @param grille : grille numérique que l'on traduit en graphique
+	 */
 	public AffichageGrille(Grille grille)  {
 		setLayout(new GridLayout(grille.getTaille(),grille.getTaille()));
 		buttons = new JPanel[(int)Math.pow(grille.getTaille(),2)];

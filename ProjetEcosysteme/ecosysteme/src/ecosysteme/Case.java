@@ -8,19 +8,30 @@ import animaux.Animal;
  *
  */
 public abstract class Case {
-	
+	/**
+	 * Quel est le type d'occupation de la case
+	 */
 	private int typeOccupation;
+	/**
+	 * La case contient-elle un animal 
+	 */
 	private boolean estVide;
+	/**
+	 * la case contient elle un cadavre ? 
+	 */
 	private boolean cadavre;
+	/**
+	 * Quelle est la position de la case
+	 */
 	private int position[];
 	
 	
 	/**
 	 * Constructeur
-	 * @param typeOccupation
-	 * @param estvide
-	 * @param cadavre
-	 * @param position
+	 * @param typeOccupation : par quoi est occupé la case
+	 * @param estvide : la case contient-elle un animal 
+	 * @param cadavre :  la case contient-elle un cadavre
+	 * @param position : quelle est la possition de la case
 	 */
 	public Case(int typeOccupation, boolean estvide, boolean cadavre, int[] position) {
 		super();
@@ -29,15 +40,11 @@ public abstract class Case {
 		this.cadavre = cadavre;
 		this.position = position;
 	}
+	
 	/**
 	 * getters et setters
 	 * @return
 	 */
-	/*
-	public int getTypeOccupation() {
-		return typeOccupation;
-	}
-*/
 	public boolean getEstVide() {
 		return estVide;
 	}

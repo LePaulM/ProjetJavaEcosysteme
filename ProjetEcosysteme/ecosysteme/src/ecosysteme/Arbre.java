@@ -2,6 +2,11 @@ package ecosysteme;
 
 import Gestion.Gestionnaire;
 
+/**
+ * Cette classe gère les cases de type arbre
+ * @author Paul, Armand et Louise
+ *
+ */
 public class Arbre extends Case{
 	/**
 	 * stock de nourriture que contient la foret
@@ -9,14 +14,21 @@ public class Arbre extends Case{
 	private int nourriture;
 
 	/**
-	 * Constructeur
+	 * Contructeur
+	 * @param position : position de la case
 	 */
 	public Arbre(int[] position) {
 		super(3, true, false, position);
 		this.nourriture=20;
 	}
 	
-	
+	/**
+	 * Constrcuteur
+	 * @param typeOccupation : le type d'occupation : herbe, sol nu, neige, ...
+	 * @param estvide : contient-elle un animal ou non ? 
+	 * @param cadavre : contient-elle un cadavre ? 
+	 * @param position : position de la case
+	 */
 	public Arbre(int typeOccupation, boolean estvide, boolean cadavre, int[] position) {
 		super(3, estvide, cadavre, position);
 		this.nourriture=20;
@@ -25,7 +37,7 @@ public class Arbre extends Case{
 
 	/**
 	 * Getter
-	 * @return
+	 * @return la quantité de nourriture que contient la case
 	 */
 	public int getNourriture() {
 		return nourriture;
@@ -34,7 +46,7 @@ public class Arbre extends Case{
 
 	/**
 	 * Setter
-	 * @param nourriture
+	 * @param nourriture : la quantité de nourriture que contient la case
 	 */
 	public void setNourriture(int nourriture) {
 		this.nourriture = nourriture;
@@ -44,7 +56,7 @@ public class Arbre extends Case{
 
 
 	/**
-	 * mÃ©thode qui recharge le stock de nouriiture que contient le buisson si il est vide
+	 * mÃ©thode qui recharge le stock de nourriture que contient le buisson si il est vide
 	 */
 	public void recuperation() {
 
@@ -62,7 +74,10 @@ public class Arbre extends Case{
 			}
 		}
 	}
-
+	
+	/**
+	 * getter
+	 */
 	@Override
 	public int getTypeOccupation() {
 		return 3;

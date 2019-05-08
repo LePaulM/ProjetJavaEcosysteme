@@ -2,6 +2,11 @@ package ecosysteme;
 
 import Gestion.Gestionnaire;
 
+/**
+ * Classe gérant les cases de type buisson
+ * @author Paul, Armand et Louise
+ *
+ */
 public class Buisson extends Case{
 
 	/**
@@ -11,12 +16,20 @@ public class Buisson extends Case{
 
 	/**
 	 * Constructeur
+	 * @param position
 	 */
 	public Buisson(int[] position) {
 		super(1, true, false, position);
 		this.nourriture=10;
 	}
 	
+	/**
+	 * Constructeur
+	 * @param typeOccupation
+	 * @param estvide
+	 * @param cadavre
+	 * @param position
+	 */
 	public Buisson(int typeOccupation, boolean estvide, boolean cadavre, int[] position) {
 		super(typeOccupation, estvide, cadavre, position);
 		this.nourriture=10;
@@ -59,6 +72,9 @@ public class Buisson extends Case{
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	public int getTypeOccupation() {
 		return 1;
 	}

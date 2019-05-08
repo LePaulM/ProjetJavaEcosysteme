@@ -74,16 +74,6 @@ public abstract class Grille {
 	}
 
 	/**
-	 * une methode qui permet de modifier une case de la grille
-	 */
-	/*
-	public void modifier(int x, int y, int z){
-		this.grille[x][y]=z;
-		
-	}
-	 */
-
-	/**
 	 * Une methode qui cree les buissons, applicable a toutes les classes filles, c'est une g�n�ration dans l'espace al�atoirement d'une quantitee de buisson definie en parametre. Lors de la creation de la grille un buisson ne peut etre place ni sur un autre buisson, ni sur aucun autre sol excepte l'herbe et le sable.
 	 * @param buisson
 	 */

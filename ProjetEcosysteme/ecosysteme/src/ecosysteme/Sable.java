@@ -8,7 +8,7 @@ package ecosysteme;
 public class Sable extends Case{
 	/**
 	 * Constrcuteur
-	 * @param position
+	 * @param position : position de la case
 	 */
 	public Sable(int[] position) {
 		super(4, true, false, position);
@@ -16,10 +16,10 @@ public class Sable extends Case{
 	
 	/**
 	 * Constructeur
-	 * @param typeOccupation
-	 * @param estvide
-	 * @param cadavre
-	 * @param position
+	 * @param typeOccupation : quel est le type d'occupation de cette case (ici du sable)
+	 * @param estvide : la case contient-elle un animal
+	 * @param cadavre : la case contient-elle un cadavre
+	 * @param position : position de la case
 	 */
 	public Sable(int typeOccupation, boolean estvide, boolean cadavre, int[] position) {
 		super(4, estvide, cadavre, position);

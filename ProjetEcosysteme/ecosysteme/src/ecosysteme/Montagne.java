@@ -7,7 +7,7 @@ package ecosysteme;
 public class Montagne extends Case{
 	/**
 	 * Constructeur
-	 * @param position
+	 * @param position : quelle est la position de la case ? 
 	 */
 	public Montagne(int[] position) {
 		super(7, true, false, position);
@@ -15,10 +15,10 @@ public class Montagne extends Case{
 	
 	/**
 	 * Constructeur
-	 * @param typeOccupation
-	 * @param estvide
-	 * @param cadavre
-	 * @param position
+	 * @param typeOccupation : le type d'occupation (ici Montagne)
+	 * @param estvide : contient-elle un animal
+	 * @param cadavre : Contient-elle un cadavre
+	 * @param position : quelle est la position de la case ? 
 	 */
 	public Montagne(int typeOccupation, boolean estvide, boolean cadavre, int[] position) {
 		super(7, estvide, cadavre, position);

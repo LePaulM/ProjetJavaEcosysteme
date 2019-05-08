@@ -8,17 +8,17 @@ package ecosysteme;
 public class Neige extends Case{
 	/**
 	 * Constructeur
-	 * @param position
+	 * @param position : position de la case
 	 */
 	public Neige(int[] position) {
 		super(5, true, false, position);
 	}
 	/**
 	 * Constructeur
-	 * @param typeOccupation
-	 * @param estvide
-	 * @param cadavre
-	 * @param position
+	 * @param typeOccupation : quel est le type d'occupation de la case (ici de la neige)
+	 * @param estvide : contient-elle un animal ? 
+	 * @param cadavre : contient-elle un cadavre ? 
+	 * @param position : position de la case
 	 */
 	public Neige(int typeOccupation, boolean estvide, boolean cadavre, int[] position) {
 		super(5, estvide, cadavre, position);

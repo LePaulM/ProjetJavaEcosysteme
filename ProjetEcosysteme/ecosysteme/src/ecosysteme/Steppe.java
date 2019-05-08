@@ -1,14 +1,14 @@
 package ecosysteme;
 /**
- * 
- * @author formation
+ * Classe qui gère l'ecosystème de type Steppes
+ * @author Paul, Armand et Louise
  *
  */
 public class Steppe extends Grille{
 
 	/**
 	 * Le constructeur de la classe, reutilisant le constructeur de la classe mere
-	 * @param taille
+	 * @param taille : taille d'un côté de la grille
 	 */
 	public Steppe(int taille) {
 		super(taille);
@@ -50,31 +50,33 @@ public class Steppe extends Grille{
 			i=i+1;
 		}
 	}
-
+	
+	/**
+	 * Méthode permettant de créer de la neige
+	 */
 	@Override
 	public void creationNeige() {
 		// TODO Auto-generated method stub
 		//	Methode vide car il n'y a pas de neige dans la steppe
 	}
-
+	
+	/**
+	 * Méthode permettant de créer des montagnes
+	 */
 	@Override
 	public void creationMontagne() {
 		// TODO Auto-generated method stub
 		//	Methode vide car il n'y a pas de montagne dans la steppe
 	}
 	
-	/**
-	 * Quantitee de buissons l'ecosysteme Steppe ---> a mettre absolument dans une methode ??
-	 */
-	int buisson = (int)Math.pow(getTaille(),2)*5/100;
 
 	/**
 	 * Methode qui cree la grille avec ses composantes, l'ajout successif des sols suit un ordre bien precis
 	 */
 	@Override
 	public void creationGrille() {
+		int buisson = (int)Math.pow(getTaille(),2)*5/100;
 		Steppe  steppe= new Steppe(getTaille());
-
 		steppe.creationBuisson(buisson);
 		steppe.creationEau();
 		steppe.afficher();
