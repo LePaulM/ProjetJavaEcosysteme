@@ -3,7 +3,7 @@ package animaux;
 import java.awt.Color;
 import java.util.ArrayList;
 
-import ecosysteme.Case;
+import biome.Case;
 
 //import java.awt.Color;
 /**

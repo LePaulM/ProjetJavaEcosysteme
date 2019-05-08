@@ -6,9 +6,9 @@ import java.util.Random;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-import Gestion.Gestionnaire;
-import ecosysteme.Case;
-import ecosysteme.Grille;
+import gestion.Gestionnaire;
+import biome.Case;
+import biome.Grille;
 
 import java.awt.Color;
 import java.io.File;
@@ -103,10 +103,10 @@ public class Bouquetin extends Herbivore {
 								this.setAProcree(true);											// 			la variable permettant de savoir si l'animal a procree devient true
 								for (Case cbis : cases){											// 			on cherche ensuite  
 									if (c.getEstVide() == true) {									//			une case vide 
-										Animal tigre = new Tigre (Gestionnaire.getTour(),cbis,
+										Animal bouquetin = new Bouquetin (Gestionnaire.getTour(),cbis,
 												this.getTempsDecomposition(),  this.couleur, this.tailleEstomac/2,  this.getMaturite(),	// pour créer un nouvel individu
 												this.getAProcree(),this.getMeurtFaim());
-										Gestionnaire.addAnimal(tigre);								//			on ajoute l'animal au gestionnaire
+										Gestionnaire.addAnimal(bouquetin);								//			on ajoute l'animal au gestionnaire
 										break;														//			l'animal se reproduit et arrête de vérifier 
 									}
 								}

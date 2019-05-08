@@ -4,9 +4,9 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.stream.IntStream;
 
-import Gestion.Gestionnaire;
-import ecosysteme.Case;
-import ecosysteme.Grille;
+import gestion.Gestionnaire;
+import biome.Case;
+import biome.Grille;
 
 
 

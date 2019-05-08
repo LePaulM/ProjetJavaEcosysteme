@@ -8,9 +8,9 @@ import java.util.Random;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-import Gestion.Gestionnaire;
-import ecosysteme.Case;
-import ecosysteme.Grille;
+import gestion.Gestionnaire;
+import biome.Case;
+import biome.Grille;
 
 /**
  * 

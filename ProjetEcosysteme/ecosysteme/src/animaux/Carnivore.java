@@ -7,8 +7,8 @@ import java.awt.Color;
  */
 import java.util.ArrayList;
 
-import ecosysteme.Case;
-import ecosysteme.Grille;
+import biome.Case;
+import biome.Grille;
 
 public abstract class Carnivore extends Animal{
 	/**
