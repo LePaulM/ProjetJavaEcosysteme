@@ -43,8 +43,8 @@ public abstract class Grille {
 	
 	/**
 	 * getter qui recupere le contenu de la grille a une position (x,y)
-	 * @param x
-	 * @param y
+	 * @param x : valeur de l'abscisse
+	 * @param y : valeur de l'ordonnée
 	 * @return
 	 */
 	public static Case getCase(int x, int y) {
@@ -53,10 +53,9 @@ public abstract class Grille {
 
 	
 	/**
-	 * constructeur de la grille sous forme de matrice
-	 * @param taille
+	 * constructeur de la grille sous forme de matrice (initialisation avec uniquement de l'herbe)
+	 * @param taille : taille d'un côté de la grille
 	 */
-	//nouvelle version
 	public Grille(int taille) {
 		this.taille = taille;
 		this.grille = new ArrayList<ArrayList<Case>>();
@@ -74,8 +73,10 @@ public abstract class Grille {
 	}
 
 	/**
-	 * Une methode qui cree les buissons, applicable a toutes les classes filles, c'est une gï¿½nï¿½ration dans l'espace alï¿½atoirement d'une quantitee de buisson definie en parametre. Lors de la creation de la grille un buisson ne peut etre place ni sur un autre buisson, ni sur aucun autre sol excepte l'herbe et le sable.
-	 * @param buisson
+	 * Une methode qui cree les buissons, applicable a toutes les classes filles, c'est une gï¿½nï¿½ration dans l'espace alï¿½atoirement 
+	 * d'une quantitee de buisson definie en parametres. Lors de la creation de la grille un buisson ne peut etre 
+	 * place ni sur un autre buisson, ni sur aucun autre sol excepte l'herbe et le sable.
+	 * @param buisson : nombre de buisson souhaité
 	 */
 	public void creationBuisson(int buisson) {
 		int i=0;
@@ -103,8 +104,11 @@ public abstract class Grille {
 	}
 
 	/**
-	 * Une methode qui cree les arbres, applicable a toutes les classes filles, c'est une gï¿½nï¿½ration dans l'espace alï¿½atoirement d'une quantitee d'arbre definie en parametre. Un arbres est grand et donc occupe plusieurs cases. Lors de la creation de la grille un arbre ne peut etre place sur aucun autre sol excepte l'herbe, le sable et les buissons, il ne peut superposer que legerment un autre arbre.
-	 * @param arbre
+	 * Une methode qui cree les arbres, applicable a toutes les classes filles, c'est une gï¿½nï¿½ration dans l'espace alï¿½atoirement 
+	 * d'une quantitee d'arbre definie en parametre. Un arbre est grand et donc occupe plusieurs cases. Lors de la 
+	 * creation de la grille un arbre ne peut etre place sur aucun autre sol excepte l'herbe, le sable et 
+	 * les buissons, il ne peut superposer que legerement avec un autre arbre.
+	 * @param arbre : nombre d'abres souhaité
 	 */
 	public void creationArbre(int arbre) {
 		int i=0;
@@ -164,8 +168,8 @@ public abstract class Grille {
 	
 	
 	/**
-	 * Une methode qui permet de cree du sable selon deux regles, l'ajout de sable ne peut se faire que sur de l'herbe et doit etre distant
-	 * de deux cases d'un arbre
+	 * Une methode qui permet de creer du sable selon deux regles, l'ajout de sable ne peut se faire que sur 
+	 * de l'herbe et doit etre distant de deux cases d'un arbre. 
 	 */
 	public void creationSable(){
 		for(int x=2;x<=this.taille-3;x++) {
@@ -189,8 +193,10 @@ public abstract class Grille {
 		}
 		}
 	}
+	
 	/**
-	 * methodes abstraites redefinies dans les classes filles
+	 * methodes abstraites redefinies dans les classes filles. Elles permettent respectivement de créer de la neige, 
+	 * de l'eau et des montagnes
 	 */
 	public abstract void creationNeige();
 	public abstract void creationEau();
@@ -199,15 +205,14 @@ public abstract class Grille {
 
 	  
 	/**
-	 * Une Methode permettant de creer la grille a partir des methodes precedentes, un ordre particulier de ces methode sera choisi (......)
+	 * Methode permettant de creer la grille a partir des methodes precedentes.
 	 */
 	public  abstract void creationGrille();
 	  
 	/**
-	 * Une methode qui afficher la grille dans la console, ce n'est pas l'interface graphique.
+	 * Methode qui affiche la grille dans la console sous forme de matrice d'entiers (ce n'est pas l'interface 
+	 * graphique).
 	 */
-	
-	//nouvelle version
 	public void afficher() {
 		for(int i=0;i<this.taille;i++) {
 			for (int j=0;j<this.taille;j++) {
