@@ -73,7 +73,7 @@ public abstract class Grille {
 	}
 	
 	/**
-	 * Test si l'occupation du sol n'est pas de type herbe ou sable. Retourne true si c'est le cas.
+	 * Test si l'occupation du sol n'est pas de type herbe ou sable. 
 	 */
 	public boolean herbeOuSable() {
 		int x=(int)Math.random()*this.taille;

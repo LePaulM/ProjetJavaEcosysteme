@@ -16,16 +16,13 @@ public class Steppe extends Grille{
 
 	@Override
 	/**
-	 * methode qui creer des petits lacs. Le nombre de lacs dependant directement de la taille de la grille donc pas de parametres en entree.
-	 * Ces lacs sont de taille 3*3, repartits aleatoirement dans l'espace, ce lac ne peuvent pas entierement se superposer.
+	 * methode qui crée des petits lacs. Le nombre de lacs dependant directement de la taille de la grille donc pas de parametres en entree.
+	 * Ces lacs sont de taille 3*3, repartis aleatoirement dans l'espace, les lacs ne peuvent pas entierement se superposer.
 	 */
 	public void creationEau() {
 		int i=0;
 		while(i<(int)getTaille()/10) {
-			double a=Math.random()*getTaille();
-			double b=Math.random()*getTaille();
-			int x=(int)a;
-			int y=(int)b;
+			int x=(int)Math.random()*getTaille(),y=(int)Math.random()*getTaille();
 			if(getGrille().get(x).get(y).getTypeOccupation()==2) {
 				continue;
 			}
